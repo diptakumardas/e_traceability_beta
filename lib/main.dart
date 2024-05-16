@@ -1,4 +1,6 @@
 import 'package:e_traceability_beta/splash_screen/splash_screen.dart';
+import 'package:e_traceability_beta/view_screen/dash_board.dart';
+import 'package:e_traceability_beta/widget/custome_container.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,7 +18,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      home: DashBoard(),
     );
   }
 }

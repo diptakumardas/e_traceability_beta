@@ -76,7 +76,7 @@ class _SplashScreenState extends State<SplashScreen> {
                           height: 40,
                           width: 40,
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
+                              borderRadius: BorderRadius.circular(20),
                               color: Colors.green),
                           child: const Icon(
                             Icons.arrow_forward,
