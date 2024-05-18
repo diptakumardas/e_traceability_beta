@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:e_traceability_beta/uthpadon_pages/page2.dart';
 import 'package:e_traceability_beta/widget/custome_appbar_uthpadon.dart';
 import 'package:e_traceability_beta/widget/custome_button.dart';
@@ -7,22 +9,34 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class UthpadonPage1 extends StatefulWidget {
-  UthpadonPage1({super.key});
+  UthpadonPage1({super.key, required this.onPressed});
+  final void  Function(String) onPressed;
 
   @override
   State<UthpadonPage1> createState() => _UthpadonPage1State();
 }
 
 class _UthpadonPage1State extends State<UthpadonPage1> {
-  final List<Map<String, dynamic>> farmingOptions = [
+  /*final List<Map<String, dynamic>> farmingOptions = [
     {"title": "চিংড়ি এবং সাদা মাছ", "checked": false},
     {"title": "গলদা চিংড়ি + বাগদা চিংড়ি + সাদা মাছ", "checked": false},
     {"title": "চিংড়ি + সাদা মাছ + ধান", "checked": false},
     {"title": "অন্যান্য", "checked": false}
+  ];*/
+
+  final List<String> farmingOptions = [
+     "চিংড়ি এবং সাদা মাছ",
+     "গলদা চিংড়ি + বাগদা চিংড়ি + সাদা মাছ",
+    "চিংড়ি + সাদা মাছ + ধান",
+     "অন্যান্য",
   ];
+  int? _selectedIndex = null;
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.sizeOf(context);
+
+
     return Scaffold(
       appBar: CustomeAppbarUth(title: "উৎপাদন প্রক্রিয়া"),
       body: Padding(
@@ -39,7 +53,7 @@ class _UthpadonPage1State extends State<UthpadonPage1> {
               height: 10,
             ),
             Container(
-                height: MediaQuery.of(context).size.height * .24,
+                height: MediaQuery.of(context).size.height * .25,
                 width: MediaQuery.of(context).size.width,
                 child: ListView.builder(
                     physics: NeverScrollableScrollPhysics(),
@@ -48,11 +62,11 @@ class _UthpadonPage1State extends State<UthpadonPage1> {
                       return CheckboxListTile(
                           activeColor: Colors.black,
                           controlAffinity: ListTileControlAffinity.leading,
-                          title: Text(farmingOptions[index]['title']),
-                          value: farmingOptions[index]["checked"],
+                          title: Text(farmingOptions[index]),
+                          value: _selectedIndex == index,
                           onChanged: (bool? newValue) {
                             setState(() {
-                              farmingOptions[index]["checked"] = newValue!;
+                              _selectedIndex = index;
                             });
                           });
                     })),
@@ -67,6 +81,16 @@ class _UthpadonPage1State extends State<UthpadonPage1> {
             CustomeButton(
                 title: "পরবর্তী",
                 onClicked: () {
+
+                  /*if(_selectedIndex==null){
+                    ScaffoldMessenger.of(context).showSnackBar( SnackBar(content: Text("please choose an option"),backgroundColor: Colors.red,));
+
+
+                    return;
+                  }*/
+                  widget.onPressed(farmingOptions[_selectedIndex!]);
+
+
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => UthpadonPage2()));
                 })

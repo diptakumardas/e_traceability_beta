@@ -21,7 +21,7 @@ class _MyAppState extends State<MyApp> {
     return  MaterialApp(
 
       debugShowCheckedModeBanner: false,
-      home: DashBoard(),
+      home: SplashScreen(),
     );
   }
 }

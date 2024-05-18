@@ -22,15 +22,15 @@ class _TitleWithFieldState extends State<TitleWithField> {
           SizedBox(
             width: 10,
           ),
-          SizedBox(
-              width: MediaQuery.of(context).size.width*.35,
-              child: TextField(
-                decoration: InputDecoration(
-                  contentPadding:
-                  EdgeInsets.symmetric(vertical: 0, horizontal: 8),
-                  isDense: true,
-                ),
-              )),
+          Expanded(
+            child: TextField(
+              decoration: InputDecoration(
+                contentPadding:
+                EdgeInsets.symmetric(vertical: 0, horizontal: 8),
+                isDense: true,
+              ),
+            ),
+          ),
           SizedBox(
             width: 10,
           ),

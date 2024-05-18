@@ -58,8 +58,8 @@ class _UthpadonPage3State extends State<UthpadonPage3> {
             ),
              Row(children: [
                const Text("পানিতে লবণাক্ততার পরিমান?"),
-              SizedBox(
-                  width: MediaQuery.of(context).size.width*.55,
+              Expanded(
+
                   child: const TextField(
                     decoration: InputDecoration(
                       contentPadding:

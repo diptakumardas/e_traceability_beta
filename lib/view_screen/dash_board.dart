@@ -12,6 +12,7 @@ class DashBoard extends StatefulWidget {
 }
 
 class _DashBoardState extends State<DashBoard> {
+  String uthpadonPage1 = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,60 +21,76 @@ class _DashBoardState extends State<DashBoard> {
           child: Padding(
             padding: const EdgeInsets.only(top: 80.0),
             child: Column(
-
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(10),
                   child: SizedBox(
-                    height: MediaQuery.of(context).size.height*.22,
-                    width: MediaQuery.of(context).size.width*.45,
-                    child: Image.asset("images/farmar.jpeg",fit: BoxFit.cover,filterQuality: FilterQuality.high,),
+                    height: MediaQuery.of(context).size.height * .22,
+                    width: MediaQuery.of(context).size.width * .45,
+                    child: Image.asset(
+                      "images/farmar.jpeg",
+                      fit: BoxFit.cover,
+                      filterQuality: FilterQuality.high,
+                    ),
                   ),
                 ),
                 SizedBox(
-                  height: MediaQuery.sizeOf(context).height*.03,
+                  height: MediaQuery.sizeOf(context).height * .03,
                 ),
-                const Text(" খামারির আইডিঃ ১৬৭০০১",style: TextStyle(fontSize: 14,fontWeight: FontWeight.bold),),
+                const Text(
+                  " খামারির আইডিঃ ১৬৭০০১",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                ),
                 const SizedBox(
                   height: 50,
                 ),
                 Padding(
                   padding: const EdgeInsets.all(12.0),
                   child: SizedBox(
-                    height: MediaQuery.of(context).size.height*.34,
+                    height: MediaQuery.of(context).size.height * .34,
                     width: MediaQuery.of(context).size.width,
-
-                    child:  Column(
+                    child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            CustomeContainer(title: "উৎপাদন", onClicked: (){
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=>UthpadonPage1()));
-                            }, imagePath: "images/Vector.svg"),
-                            CustomeContainer(title: "বিক্রি", onClicked: (){}, imagePath: "images/Vector.svg"),
+                            CustomeContainer(
+                                title: "উৎপাদন",
+                                onClicked: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => UthpadonPage1(
+                                                onPressed: (value) {
+                                                  uthpadonPage1 = value;
+                                                },
+                                              )));
+                                },
+                                imagePath: "images/Vector.svg"),
+                            CustomeContainer(
+                                title: "বিক্রি",
+                                onClicked: () {},
+                                imagePath: "images/Vector.svg"),
                           ],
                         ),
-
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            CustomeContainer(title: "রিপোর্ট", onClicked: (){}, imagePath: "images/show chart.svg"),
-                            CustomeContainer(title: "নোটিফিকেশন ", onClicked: (){}, imagePath: "images/notification.svg"),
+                            CustomeContainer(
+                                title: "রিপোর্ট",
+                                onClicked: () {},
+                                imagePath: "images/show chart.svg"),
+                            CustomeContainer(
+                                title: "নোটিফিকেশন ",
+                                onClicked: () {},
+                                imagePath: "images/notification.svg"),
                           ],
                         ),
-
-
-
-
-
-
                       ],
                     ),
                   ),
                 )
-
               ],
             ),
           ),
