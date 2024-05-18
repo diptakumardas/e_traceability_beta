@@ -1,3 +1,4 @@
+import 'package:e_traceability_beta/uthpadon_pages/page1.dart';
 import 'package:e_traceability_beta/widget/custome_container.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -48,7 +49,9 @@ class _DashBoardState extends State<DashBoard> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            CustomeContainer(title: "উৎপাদন", onClicked: (){}, imagePath: "images/Vector.svg"),
+                            CustomeContainer(title: "উৎপাদন", onClicked: (){
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>UthpadonPage1()));
+                            }, imagePath: "images/Vector.svg"),
                             CustomeContainer(title: "বিক্রি", onClicked: (){}, imagePath: "images/Vector.svg"),
                           ],
                         ),
