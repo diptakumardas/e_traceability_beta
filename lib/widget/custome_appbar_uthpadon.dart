@@ -15,6 +15,7 @@ class _CustomeAppbarUthState extends State<CustomeAppbarUth> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      centerTitle: true,
       title: Text(widget.title),
       leading: IconButton(onPressed: (){Navigator.pop(context);}, icon: Icon(Icons.arrow_back)),
     );

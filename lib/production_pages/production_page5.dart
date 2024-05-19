@@ -1,3 +1,4 @@
+import 'package:e_traceability_beta/production_pages/production_page_6.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -65,7 +66,9 @@ class _UthpadonPage5State extends State<UthpadonPage5> {
             SizedBox(
               height: 20,
             ),
-            CustomeButton(title: "পরবর্তী", onClicked: (){})
+            CustomeButton(title: "পরবর্তী", onClicked: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>ProductionPage6()));
+            })
 
 
 
