@@ -11,6 +11,7 @@ class TitleWithField extends StatefulWidget {
 }
 
 class _TitleWithFieldState extends State<TitleWithField> {
+  TextEditingController controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -24,6 +25,7 @@ class _TitleWithFieldState extends State<TitleWithField> {
           ),
           Expanded(
             child: TextField(
+              controller: controller,
               decoration: InputDecoration(
                 contentPadding:
                 EdgeInsets.symmetric(vertical: 0, horizontal: 8),

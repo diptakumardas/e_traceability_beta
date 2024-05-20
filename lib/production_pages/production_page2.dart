@@ -16,16 +16,19 @@ class UthpadonPage2 extends StatefulWidget {
 
 class _UthpadonPage2State extends State<UthpadonPage2> {
 
-  final List<Map<String, dynamic>> farmingOptions2 = [
-    {"title": "ফসল উৎপাদনের পরে পুকুরের তলা শুকানো হয়েছে?", "checked": false},
-    {"title": "কালো মাটি সরানো হয়েছে?", "checked": false},
-    {"title": "পাথুরে চুন বা লাইমিং করা হয়েছে কিনা ?", "checked": false},
-    {"title": "ব্লিচিং ব্যবহার করা হয়েছে?", "checked": false},
-    {"title": "পানি দেয়ার পূর্বে সম্পূর্ণ পুকুর পরিষ্কার করা হয়েছে?", "checked": false},
-    {"title": "ব্অবাঞ্ছিত গাছপালা পরিষ্কার করা হয়েছে কিনা?", "checked": false},
-    {"title": "বরাক্ষুসে ও অবাঞ্ছিত মাছ সরানো হয়েছে?", "checked": false},
-    {"title": "পাড় মেরামত ও উঁচু করে বাঁধা হয়েছে কিনা", "checked": false},
+  final List<String> farmingOptions2 =
+
+   [
+    "ফসল উৎপাদনের পরে পুকুরের তলা শুকানো হয়েছে?",
+    "কালো মাটি সরানো হয়েছে?",
+    "পাথুরে চুন বা লাইমিং করা হয়েছে কিনা ?",
+    "ব্লিচিং ব্যবহার করা হয়েছে?",
+    "পানি দেয়ার পূর্বে সম্পূর্ণ পুকুর পরিষ্কার করা হয়েছে?",
+    "ব্অবাঞ্ছিত গাছপালা পরিষ্কার করা হয়েছে কিনা?",
+    "বরাক্ষুসে ও অবাঞ্ছিত মাছ সরানো হয়েছে?",
+    "পাড় মেরামত ও উঁচু করে বাঁধা হয়েছে কিনা",
   ];
+  int? _selectedIndex;
 
 
 
@@ -55,11 +58,11 @@ class _UthpadonPage2State extends State<UthpadonPage2> {
                       return CheckboxListTile(
                           activeColor: Colors.black,
                           controlAffinity: ListTileControlAffinity.leading,
-                          title: Text(farmingOptions2[index]['title']),
-                          value: farmingOptions2[index]["checked"],
+                          title: Text(farmingOptions2[index]),
+                          value: _selectedIndex == index,
                           onChanged: (bool? newValue) {
                             setState(() {
-                              farmingOptions2[index]["checked"] = newValue!;
+                              _selectedIndex = index;
                             });
                           });
                     })),
