@@ -12,6 +12,8 @@ class Customeform extends StatefulWidget {
 }
 
 class _CustomeformState extends State<Customeform> {
+
+  TextEditingController controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -26,6 +28,7 @@ class _CustomeformState extends State<Customeform> {
           height: 50,
           child: Form(
             child: TextFormField(
+              controller: controller,
 
               obscureText: true,
               decoration: InputDecoration(
