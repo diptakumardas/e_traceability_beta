@@ -55,10 +55,10 @@ class _UthpadonPage5State extends State<UthpadonPage5> {
                     })),
 
 
-            TitleWithField(title1: "বলদা রেণু মজুদ", title2: "প্রতি বিঘা"),
-            TitleWithField(title1: "গলদা রেণু মজুদ", title2: "প্রতি বিঘা"),
-            TitleWithField(title1: "বলদা পিছ", title2: "প্রতি বিঘা"),
-            TitleWithField(title1: "সাদা মাছ", title2: "প্রতি বিঘা"),
+            TitleWithField(title1: "বলদা রেণু মজুদ", title2: "প্রতি বিঘা", textFieldValue: '',),
+            TitleWithField(title1: "গলদা রেণু মজুদ", title2: "প্রতি বিঘা", textFieldValue: '',),
+            TitleWithField(title1: "বলদা পিছ", title2: "প্রতি বিঘা", textFieldValue: '',),
+            TitleWithField(title1: "সাদা মাছ", title2: "প্রতি বিঘা", textFieldValue: '',),
             SizedBox(
               height: 20,
             ),

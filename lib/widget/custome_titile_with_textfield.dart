@@ -1,10 +1,17 @@
+import 'package:e_traceability_beta/provider/screen_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class TitleWithField extends StatefulWidget {
-  const TitleWithField({super.key,required this.title1, required this.title2});
-  final  String title1;
+  const TitleWithField(
+      {super.key,
+      required this.title1,
+      required this.title2,
+      required this.textFieldValue});
+  final String title1;
   final String title2;
+  final String textFieldValue;
 
   @override
   State<TitleWithField> createState() => _TitleWithFieldState();
@@ -12,6 +19,13 @@ class TitleWithField extends StatefulWidget {
 
 class _TitleWithFieldState extends State<TitleWithField> {
   TextEditingController controller = TextEditingController();
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    controller.text = widget.textFieldValue;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -26,9 +40,16 @@ class _TitleWithFieldState extends State<TitleWithField> {
           Expanded(
             child: TextField(
               controller: controller,
-              decoration: InputDecoration(
+              onChanged: (value) {
+                setState(() {
+                  controller.text = value;
+                  Provider.of<FarmingOptionsProvider>(context, listen: false)
+                      .updateLandArea(value);
+                });
+              },
+              decoration: const InputDecoration(
                 contentPadding:
-                EdgeInsets.symmetric(vertical: 0, horizontal: 8),
+                    EdgeInsets.symmetric(vertical: 0, horizontal: 8),
                 isDense: true,
               ),
             ),

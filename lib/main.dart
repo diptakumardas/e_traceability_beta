@@ -24,10 +24,10 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => McqProvider(),
+      create: (context) => FarmingOptionsProvider(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home:SellScreen()
+        home:TestPage1()
       ),
     );
   }

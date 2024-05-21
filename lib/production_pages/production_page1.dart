@@ -110,7 +110,7 @@ class _UthpadonPage1State extends State<UthpadonPage1> {
               height: 20,
             ),
             const TitleWithField(
-                title1: "চাষযোগ্য মোট জমির পরিমান", title2: "শতাংশ"),
+                title1: "চাষযোগ্য মোট জমির পরিমান", title2: "শতাংশ", textFieldValue: '',),
             const SizedBox(
               height: 50,
             ),

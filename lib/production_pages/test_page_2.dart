@@ -1,20 +1,15 @@
+import 'package:e_traceability_beta/production_pages/preview_page.dart';
+import 'package:e_traceability_beta/production_pages/production_page3.dart';
+import 'package:e_traceability_beta/widget/custome_appbar_uthpadon.dart';
+import 'package:e_traceability_beta/widget/custome_button.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../provider/screen_provider.dart';
-import '../widget/custome_appbar_uthpadon.dart';
-import '../widget/custome_button.dart';
 import '../widget/custome_title.dart';
-import 'preview_page.dart';
+import 'package:flutter/foundation.dart';
 
-class TestPage2 extends StatefulWidget {
-  const TestPage2({super.key});
-
-  @override
-  State<TestPage2> createState() => _TestPage2State();
-}
-
-class _TestPage2State extends State<TestPage2> {
-  final List<String> farmingOptions2 = [
+class TestPage2 extends StatelessWidget {
+  final List<String> farmingOptions3 = [
     "ফসল উৎপাদনের পরে পুকুরের তলা শুকানো হয়েছে?",
     "কালো মাটি সরানো হয়েছে?",
     "পাথুরে চুন বা লাইমিং করা হয়েছে কিনা ?",
@@ -39,19 +34,19 @@ class _TestPage2State extends State<TestPage2> {
             Container(
               height: MediaQuery.of(context).size.height * .5,
               width: MediaQuery.of(context).size.width,
-              child: Consumer<McqProvider>(
+              child: Consumer<FarmingOptionsProvider>(
                 builder: (context, provider, child) {
                   return ListView.builder(
                     physics: NeverScrollableScrollPhysics(),
-                    itemCount: farmingOptions2.length,
+                    itemCount: farmingOptions3.length,
                     itemBuilder: (context, index) {
                       return CheckboxListTile(
                         activeColor: Colors.black,
                         controlAffinity: ListTileControlAffinity.leading,
-                        title: Text(farmingOptions2[index]),
-                        value: provider.selectedOptionPage2 == index,
+                        title: Text(farmingOptions3[index]),
+                        value: provider.selectedOptions2[index],
                         onChanged: (bool? newValue) {
-                          provider.selectOptionPage2(index);
+                          provider.toggleOption2(index);
                         },
                       );
                     },

@@ -1,36 +1,29 @@
-/*import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 
-class McqProvider with ChangeNotifier {
-  int? selectedOptionPage1;
-  int? selectedOptionPage2;
+class FarmingOptionsProvider with ChangeNotifier {
+  List<bool> _selectedOptions = List<bool>.filled(8, false); // assuming 8 options
+  List<bool> _selectedOptions2 = List<bool>.filled(8, false);
+String _landArea = "";
 
-  void selectOptionPage1(int index) {
-    selectedOptionPage1 = index;
+  List<bool> get selectedOptions => _selectedOptions;
+  List<bool> get selectedOptions2 => _selectedOptions2;
+  String get landArea => _landArea;
+
+
+  void toggleOption(int index) {
+    _selectedOptions[index] = !_selectedOptions[index];
     notifyListeners();
   }
 
-  void selectOptionPage2(int index) {
-    selectedOptionPage2 = index;
-    notifyListeners();
-  }
-}*/
-import 'package:flutter/material.dart';
-
-class McqProvider with ChangeNotifier {
-  List<int> selectedOptionsPage1 = [];
-  int? selectedOptionPage2;
-
-  void toggleOptionPage1(int index) {
-    if (selectedOptionsPage1.contains(index)) {
-      selectedOptionsPage1.remove(index);
-    } else {
-      selectedOptionsPage1.add(index);
-    }
+  void toggleOption2(int index) {
+    _selectedOptions2[index] = !_selectedOptions2[index];
     notifyListeners();
   }
 
-  void selectOptionPage2(int index) {
-    selectedOptionPage2 = index;
+  void updateLandArea (String newArea){
+    _landArea = newArea;
     notifyListeners();
   }
+
+
 }
