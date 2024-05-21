@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Customeform extends StatefulWidget {
-  const Customeform({super.key,required this.title,required this.hintText, this.fieldIcon});
+  const Customeform({super.key,required this.title,required this.hintText,});
   final String title;
   final String hintText;
-  final IconData? fieldIcon;
+
 
   @override
   State<Customeform> createState() => _CustomeformState();
@@ -29,7 +29,6 @@ class _CustomeformState extends State<Customeform> {
 
               obscureText: true,
               decoration: InputDecoration(
-                suffixIcon: widget.fieldIcon != null ? Icon(widget.fieldIcon) : null,
                 hintText: widget.hintText,
                 hintStyle: TextStyle(fontSize: 15,color: Colors.black),
                 fillColor: Colors.white30,

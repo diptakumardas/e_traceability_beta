@@ -66,6 +66,7 @@ class _PreviewPageState extends State<PreviewPage> {
               Consumer<FarmingOptionsProvider>(
                   builder: (context, provider, child) {
                 return TitleWithField(
+                  readOnly: true,
                   title1: "চাষযোগ্য মোট জমির পরিমান",
                   title2: "শতাংশ",
                   textFieldValue:

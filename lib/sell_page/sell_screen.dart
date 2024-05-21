@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:e_traceability_beta/widget/calender.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -37,39 +38,6 @@ class _SellScreenState extends State<SellScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CamraModule(),
-              /*Container(
-                height: 120,
-                width: double.infinity,
-                color: Color(0xFFE0FFD6),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    IconButton(onPressed: (){}, icon: const Icon(Icons.image_outlined,color: Colors.grey,size: 40,),),
-                    const Text("ছবি নির্বাচন করুন",style: TextStyle(color: Colors.grey,fontSize: 15),)
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              InkWell(
-                onTap: (){},
-                child: Container(
-                  height: 50,
-                  width: double.infinity,
-                  color: const Color(0xFFE0FFD6),
-                  child: const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Icon(Icons.camera_alt,size: 18,color: Colors.green,),
-                      Padding(
-                        padding: EdgeInsets.only(right:  60.0),
-                        child: Text("ক্যামেরা খুলুন এবং ছবি তুলুন",style: TextStyle(fontSize: 15,color: Colors.green),),
-                      ),
-                    ],
-                  ),
-                ),
-              ),*/
               const SizedBox(
                 height: 30,
               ),
@@ -81,7 +49,7 @@ class _SellScreenState extends State<SellScreen> {
               const SizedBox(
                 height: 10,
               ),
-              const Customeform(title: "তারিখ", hintText: "নির্বাচন কারুন",fieldIcon: Icons.calendar_month,),
+              Calender(title: "তারিখ", hintText: "তারিখ নির্বাচন করুন"),
               const SizedBox(
                 height: 40,
               ),

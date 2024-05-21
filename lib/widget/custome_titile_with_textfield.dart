@@ -8,10 +8,12 @@ class TitleWithField extends StatefulWidget {
       {super.key,
       required this.title1,
       required this.title2,
-      required this.textFieldValue});
+      required this.textFieldValue,
+      this.readOnly = false});
   final String title1;
   final String title2;
   final String textFieldValue;
+  final bool? readOnly;
 
   @override
   State<TitleWithField> createState() => _TitleWithFieldState();
@@ -39,6 +41,8 @@ class _TitleWithFieldState extends State<TitleWithField> {
           ),
           Expanded(
             child: TextField(
+              readOnly: false,
+
               controller: controller,
               onChanged: (value) {
                 setState(() {

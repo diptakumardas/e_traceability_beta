@@ -27,7 +27,7 @@ class _MyAppState extends State<MyApp> {
       create: (context) => FarmingOptionsProvider(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home:TestPage1()
+        home:SellScreen()
       ),
     );
   }
