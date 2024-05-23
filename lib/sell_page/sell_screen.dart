@@ -124,7 +124,7 @@ class _SellScreenState extends State<SellScreen> {
               const SizedBox(
                 height: 30,
               ),
-              Customeform(title: "খামারির নাম", hintText: "নাম লিখুন",controller: controller1,),
+              Customeform(title: "খামারির নাম", hintText: "নাম লিখুন",controller: controller1),
               const SizedBox(
                 height: 10,
               ),

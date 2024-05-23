@@ -26,7 +26,7 @@ class _Page1State extends State<Page1> {
                     height: 200,
                     width: 200,
                     color: Colors.red,
-                    child: Image.asset("images/mk5.jpeg",fit: BoxFit.cover,),
+                    child: Image.asset("images/chingri.webp",fit: BoxFit.cover,),
                   ),
 
                 ),

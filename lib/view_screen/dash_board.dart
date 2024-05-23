@@ -1,5 +1,6 @@
 import 'package:e_traceability_beta/production_pages/pp1.dart';
 import 'package:e_traceability_beta/sell_page/sell_screen.dart';
+import 'package:e_traceability_beta/view_screen/notification_page.dart';
 import 'package:e_traceability_beta/widget/custome_container.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -84,7 +85,9 @@ class _DashBoardState extends State<DashBoard> {
                                 imagePath: "images/show chart.svg"),
                             CustomeContainer(
                                 title: "নোটিফিকেশন ",
-                                onClicked: () {},
+                                onClicked: () {
+                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>NotificationPage()));
+                                },
                                 imagePath: "images/notification.svg"),
                           ],
                         ),

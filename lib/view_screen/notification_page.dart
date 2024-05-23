@@ -14,11 +14,9 @@ class _NotificationPageState extends State<NotificationPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomeAppbarUth(title: "বিজ্ঞপ্তি"),
-      body: ListView.builder(itemBuilder: (context,index){
-        return ListTile(
+      body: Container(
 
-        );
-      }),
+      )
     );
   }
 }

@@ -11,6 +11,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  TextEditingController userController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,6 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         height: 55,
                         child: Form(
                           child: TextFormField(
+                            controller: userController,
                             decoration: InputDecoration(
                               hintText: "আপনার নাম লিখুন ",
                               fillColor: Colors.white30,
@@ -83,6 +86,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         height: 55,
                         child: Form(
                           child: TextFormField(
+                            controller: passwordController,
                             obscureText: true,
                             decoration: InputDecoration(
                               hintText: "পাসওয়ার্ড",

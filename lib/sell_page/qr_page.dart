@@ -1,7 +1,7 @@
+import 'dart:typed_data';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
-import 'dart:typed_data';
 
 class QrPage extends StatelessWidget {
   const QrPage({Key? key, required this.imageData, required this.formValues})
@@ -31,15 +31,19 @@ class QrPage extends StatelessWidget {
             ),
           ),
           ElevatedButton(
-              onPressed: () {},
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-
-
-                  Text("প্রিন্ট করুন"), Icon(Icons.print)],
-              )),
-          TextButton(onPressed: (){}, child: Text("এড়িয়ে যান"))
+            onPressed: () {},
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text("প্রিন্ট করুন"),
+                Icon(Icons.print),
+              ],
+            ),
+          ),
+          TextButton(
+            onPressed: () {},
+            child: Text("এড়িয়ে যান"),
+          )
         ],
       ),
     );
