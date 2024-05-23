@@ -1,3 +1,4 @@
+import 'package:e_traceability_beta/view_screen/dash_board.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -68,59 +69,67 @@ class _PreviewFinalPageState extends State<PreviewFinalPage> {
         body: Padding(
             padding: const EdgeInsets.all(10.0),
             child: SingleChildScrollView(
-              scrollDirection: Axis.vertical,
+                scrollDirection: Axis.vertical,
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                  CustomTitle(title: "মাছের খামার এবং কৃষি ব্যবস্থা"),
-                  SizedBox(height: 20),
-                  Consumer<FarmingOptionsProvider>(
-                    builder: (context, provider, child) {
-                      return ListView.builder(
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        itemCount: farmingOptions1.length,
-                        itemBuilder: (context, index) {
-                          return CheckboxListTile(
-                            activeColor: Colors.black,
-                            controlAffinity: ListTileControlAffinity.leading,
-                            title: Text(farmingOptions1[index]),
-                            value: provider.selectedOptions1[index],
-                            onChanged: null, // Disable checkbox interaction
+                      const CustomTitle(title: "মাছের খামার এবং কৃষি ব্যবস্থা"),
+                      SizedBox(height: 20),
+                      Text("চাষের ধরন/বিভাগঃ "),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Consumer<FarmingOptionsProvider>(
+                        builder: (context, provider, child) {
+                          return ListView.builder(
+                            physics: NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            itemCount: farmingOptions1.length,
+                            itemBuilder: (context, index) {
+                              return CheckboxListTile(
+                                enabled: false,
+                                activeColor: Colors.black,
+                                controlAffinity: ListTileControlAffinity.leading,
+                                title: Text(farmingOptions1[index]),
+                                value: provider.selectedOptions1[index],
+                                onChanged: (bool? newValue) {
+                                  provider.toggleOption1(index);
+                                },
+                              );
+                            },
                           );
                         },
-                      );
-                    },
-                  ),
-                  Consumer<FarmingOptionsProvider>(
-                      builder: (context, provider, child) {
-                    return TitleWithField(
-                      readOnly: true,
-                      title1: "চাষযোগ্য মোট জমির পরিমান",
-                      title2: "শতাংশ",
-                      textFieldValue:
-                          Provider.of<FarmingOptionsProvider>(context).landArea,
-                    );
-                  }),
-
+                      ),
+                      Consumer<FarmingOptionsProvider>(
+                          builder: (context, provider, child) {
+                        return TitleWithField(
+                          readOnly: true,
+                          title1: "চাষযোগ্য মোট জমির পরিমান",
+                          title2: "শতাংশ",
+                          textFieldValue:
+                              Provider.of<FarmingOptionsProvider>(context)
+                                  .landArea,
+                        );
+                      }),
                       SizedBox(height: 50),
-
-
                       CustomTitle(title: "পুকুর প্রস্তুতি"),
                       SizedBox(height: 20),
                       Consumer<FarmingOptionsProvider>(
                         builder: (context, provider, child) {
                           return ListView.builder(
+                            physics: const NeverScrollableScrollPhysics(),
                             shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
                             itemCount: farmingOptions2.length,
                             itemBuilder: (context, index) {
                               return CheckboxListTile(
+                                enabled: false,
                                 activeColor: Colors.black,
                                 controlAffinity: ListTileControlAffinity.leading,
                                 title: Text(farmingOptions2[index]),
                                 value: provider.selectedOptions2[index],
-                                onChanged: null, // Disable checkbox interaction
+                                onChanged: (bool? newValue) {
+                                  provider.toggleOption2(index);
+                                },
                               );
                             },
                           );
@@ -135,13 +144,15 @@ class _PreviewFinalPageState extends State<PreviewFinalPage> {
                         builder: (context, provider, child) {
                           return ListView.builder(
                             shrinkWrap: true,
-                            physics:  NeverScrollableScrollPhysics(),
+                            physics: NeverScrollableScrollPhysics(),
                             itemCount: farmingOptions3.length,
                             itemBuilder: (context, index) {
                               return CheckboxListTile(
+                                enabled: false,
                                 activeColor: Colors.black,
-                                controlAffinity: ListTileControlAffinity.leading,
-                                title: Text(farmingOptions3[index] ),
+                                controlAffinity:
+                                    ListTileControlAffinity.leading,
+                                title: Text(farmingOptions3[index]),
                                 value: provider.selectedOptions3[index],
                                 onChanged: (bool? newValue) {
                                   provider.toggleOption3(index);
@@ -162,7 +173,8 @@ class _PreviewFinalPageState extends State<PreviewFinalPage> {
                           title1: "পানিতে লবণাক্ততার পরিমান?",
                           title2: " ",
                           textFieldValue:
-                          Provider.of<FarmingOptionsProvider>(context).saltAmount),
+                              Provider.of<FarmingOptionsProvider>(context)
+                                  .saltAmount),
                       SizedBox(
                         height: 30,
                       ),
@@ -176,8 +188,10 @@ class _PreviewFinalPageState extends State<PreviewFinalPage> {
                             itemCount: farmingOptions4.length,
                             itemBuilder: (context, index) {
                               return CheckboxListTile(
+                                enabled: false,
                                 activeColor: Colors.black,
-                                controlAffinity: ListTileControlAffinity.leading,
+                                controlAffinity:
+                                    ListTileControlAffinity.leading,
                                 title: Text(farmingOptions4[index]),
                                 value: provider.selectedOptions4[index],
                                 onChanged: (bool? newValue) {
@@ -195,11 +209,12 @@ class _PreviewFinalPageState extends State<PreviewFinalPage> {
                           title1: "আপনি দিনে কতবার খাবার খাওয়ান",
                           title2: "বার",
                           textFieldValue:
-                          Provider.of<FarmingOptionsProvider>(context).feedAmount),
-
+                              Provider.of<FarmingOptionsProvider>(context)
+                                  .feedAmount),
                       SizedBox(
                         height: 30,
-                      ),CustomTitle(title: "PL/ Juvenile এর উৎস"),
+                      ),
+                      CustomTitle(title: "PL/ Juvenile এর উৎস"),
                       SizedBox(height: 20),
                       Consumer<FarmingOptionsProvider>(
                         builder: (context, provider, child) {
@@ -209,8 +224,10 @@ class _PreviewFinalPageState extends State<PreviewFinalPage> {
                             itemCount: farmingOptions5.length,
                             itemBuilder: (context, index) {
                               return CheckboxListTile(
+                                enabled: false,
                                 activeColor: Colors.black,
-                                controlAffinity: ListTileControlAffinity.leading,
+                                controlAffinity:
+                                    ListTileControlAffinity.leading,
                                 title: Text(farmingOptions5[index]),
                                 value: provider.selectedOptions5[index],
                                 onChanged: (bool? newValue) {
@@ -228,34 +245,43 @@ class _PreviewFinalPageState extends State<PreviewFinalPage> {
                           title1: "বাগদা রেণু মজুদ",
                           title2: "প্রতি বিঘা",
                           textFieldValue:
-                          Provider.of<FarmingOptionsProvider>(context).bagdaAmount),
+                              Provider.of<FarmingOptionsProvider>(context)
+                                  .bagdaAmount),
                       TitleWithField(
                           title1: "গলদা রেণু মজুদ",
                           title2: "প্রতি বিঘা",
                           textFieldValue:
-                          Provider.of<FarmingOptionsProvider>(context).galdaAmount),
+                              Provider.of<FarmingOptionsProvider>(context)
+                                  .galdaAmount),
                       TitleWithField(
                           title1: "বলদা পিছ",
                           title2: "প্রতি বিঘা",
                           textFieldValue:
-                          Provider.of<FarmingOptionsProvider>(context).bagdaPAmount),
+                              Provider.of<FarmingOptionsProvider>(context)
+                                  .bagdaPAmount),
                       TitleWithField(
                           title1: "সাদা মাছ",
                           title2: "সাদা মাছ",
                           textFieldValue:
-                          Provider.of<FarmingOptionsProvider>(context).galdaPAmount),
+                              Provider.of<FarmingOptionsProvider>(context)
+                                  .galdaPAmount),
                       SizedBox(
                         height: 20,
                       ),
-                      Text("***বিশেষ দ্রষ্টব্যঃ  ১ বিঘা = ৩৩ শতাংশ",style: TextStyle(color: Colors.red),),
+                      Text(
+                        "***বিশেষ দ্রষ্টব্যঃ  ১ বিঘা = ৩৩ শতাংশ",
+                        style: TextStyle(color: Colors.red),
+                      ),
                       SizedBox(
                         height: 30,
                       ),
-                      CustomTitle(title: "মাছের স্বাস্থ্য এবং পানির গুণাগুণ পরীক্ষা"),
+                      CustomTitle(
+                          title: "মাছের স্বাস্থ্য এবং পানির গুণাগুণ পরীক্ষা"),
                       SizedBox(height: 20),
-                Text("আপনি কি মাছ/চিংড়ি বৃদ্ধির হার পরীক্ষা করেন?"),
-                const SizedBox(
-                    height: 10,),
+                      Text("আপনি কি মাছ/চিংড়ি বৃদ্ধির হার পরীক্ষা করেন?"),
+                      const SizedBox(
+                        height: 10,
+                      ),
                       Consumer<FarmingOptionsProvider>(
                         builder: (context, provider, child) {
                           return ListView.builder(
@@ -264,8 +290,10 @@ class _PreviewFinalPageState extends State<PreviewFinalPage> {
                             itemCount: option.length,
                             itemBuilder: (context, index) {
                               return CheckboxListTile(
+                                enabled: false,
                                 activeColor: Colors.black,
-                                controlAffinity: ListTileControlAffinity.leading,
+                                controlAffinity:
+                                    ListTileControlAffinity.leading,
                                 title: Text(option[index]),
                                 value: provider.selectedOptions6[index],
                                 onChanged: (bool? newValue) {
@@ -286,46 +314,41 @@ class _PreviewFinalPageState extends State<PreviewFinalPage> {
                       SizedBox(
                         height: 10,
                       ),
-
-              Consumer<FarmingOptionsProvider>(
-                builder: (context, provider, child) {
-                  return ListView.builder(
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemCount: farmingOptions6.length,
-                    itemBuilder: (context, index) {
-                      return CheckboxListTile(
-                        activeColor: Colors.black,
-                        controlAffinity: ListTileControlAffinity.leading,
-                        title: Text(farmingOptions6[index]),
-                        value: provider.selectedOptions7[index],
-                        onChanged: (bool? newValue) {
-                          provider.toggleOption7(index);
+                      Consumer<FarmingOptionsProvider>(
+                        builder: (context, provider, child) {
+                          return ListView.builder(
+                            physics: const NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            itemCount: farmingOptions6.length,
+                            itemBuilder: (context, index) {
+                              return CheckboxListTile(
+                                enabled: false,
+                                activeColor: Colors.black,
+                                controlAffinity:
+                                    ListTileControlAffinity.leading,
+                                title: Text(farmingOptions6[index]),
+                                value: provider.selectedOptions7[index],
+                                onChanged: (bool? newValue) {
+                                  provider.toggleOption7(index);
+                                },
+                              );
+                            },
+                          );
                         },
-                      );
-                    },
-                  );
-                },
-              ),
-
-             SizedBox(
-              height: 10,
-            ),
-
-            CustomeButton(
-              title: "সাবমিট করুন",
-              onClicked: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => PreviewFinalPage()),
-                );
-              },
-            ),
-
-
-                ])
-            )
-        )
-    );
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      CustomeButton(
+                        title: "সাবমিট করুন",
+                        onClicked: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => DashBoard()),
+                          );
+                        },
+                      ),
+                    ]))));
   }
 }

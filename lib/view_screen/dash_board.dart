@@ -1,3 +1,5 @@
+import 'package:e_traceability_beta/production_pages/pp1.dart';
+import 'package:e_traceability_beta/sell_page/sell_screen.dart';
 import 'package:e_traceability_beta/widget/custome_container.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -62,16 +64,14 @@ class _DashBoardState extends State<DashBoard> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => UthpadonPage1(
-                                                onPressed: (value) {
-                                                  uthpadonPage1 = value;
-                                                },
-                                              )));
+                                          builder: (context) => ProductionPage1()));
                                 },
                                 imagePath: "images/Vector.svg"),
                             CustomeContainer(
                                 title: "বিক্রি",
-                                onClicked: () {},
+                                onClicked: () {
+                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>SellScreen()));
+                                },
                                 imagePath: "images/Vector.svg"),
                           ],
                         ),

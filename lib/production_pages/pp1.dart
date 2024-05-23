@@ -47,6 +47,7 @@ class _ProductionPage1State extends State<ProductionPage1> {
                   builder: (context, provider, child) {
                     return ListView.builder(
                       physics: NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
                       itemCount: farmingOptions1.length,
                       itemBuilder: (context, index) {
                         return CheckboxListTile(
