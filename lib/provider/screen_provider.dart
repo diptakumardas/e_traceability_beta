@@ -126,13 +126,13 @@ import 'package:flutter/foundation.dart';
 
 class FarmingOptionsProvider with ChangeNotifier {
   // Define the fields
-  List<bool> _selectedOptions3 = List<bool>.filled(8, false); // assuming 8 options
-  List<bool> _selectedOptions2 = List<bool>.filled(8, false);
-  List<bool> _selectedOptions1 = List<bool>.filled(4, false);
-  List<bool> _selectedOptions4 = List<bool>.filled(3, false);
-  List<bool> _selectedOptions5 = List<bool>.filled(4, false);
-  List<bool> _selectedOptions6 = List<bool>.filled(2, false);
-  List<bool> _selectedOptions7 = List<bool>.filled(7, false);
+  final List<bool> _selectedOptions3 = List<bool>.filled(8, false); // assuming 8 options
+  final List<bool> _selectedOptions2 = List<bool>.filled(8, false);
+  final List<bool> _selectedOptions1 = List<bool>.filled(4, false);
+  final List<bool> _selectedOptions4 = List<bool>.filled(3, false);
+  final List<bool> _selectedOptions5 = List<bool>.filled(4, false);
+  final List<bool> _selectedOptions6 = List<bool>.filled(2, false);
+  final List<bool> _selectedOptions7 = List<bool>.filled(7, false);
 
   String _landArea = "";
   String _saltAmount = "";

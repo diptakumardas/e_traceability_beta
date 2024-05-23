@@ -33,57 +33,59 @@ class _ProductionPage3State extends State<ProductionPage3> {
         appBar: const CustomeAppbarUth(title: "উৎপাদন প্রক্রিয়া"),
     body: Padding(
     padding: const EdgeInsets.all(10.0),
-    child: Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-    CustomTitle(title: "পানির উৎস"),
-    SizedBox(height: 20),
-      Container(
-        height: MediaQuery.of(context).size.height * .3,
-        width: MediaQuery.of(context).size.width,
-        child: Consumer<FarmingOptionsProvider>(
-          builder: (context, provider, child) {
-            return ListView.builder(
-              physics:  NeverScrollableScrollPhysics(),
-              itemCount: farmingOptions3.length,
-              itemBuilder: (context, index) {
-                return CheckboxListTile(
-                  activeColor: Colors.black,
-                  controlAffinity: ListTileControlAffinity.leading,
-                  title: Text(farmingOptions3[index] ),
-                  value: provider.selectedOptions3[index],
-                  onChanged: (bool? newValue) {
-                    provider.toggleOption3(index);
-                  },
-                );
-              },
+    child: SingleChildScrollView(
+      child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+      CustomTitle(title: "পানির উৎস"),
+      SizedBox(height: 20),
+        Container(
+          height: MediaQuery.of(context).size.height * .3,
+          width: MediaQuery.of(context).size.width,
+          child: Consumer<FarmingOptionsProvider>(
+            builder: (context, provider, child) {
+              return ListView.builder(
+                physics:  NeverScrollableScrollPhysics(),
+                itemCount: farmingOptions3.length,
+                itemBuilder: (context, index) {
+                  return CheckboxListTile(
+                    activeColor: Colors.black,
+                    controlAffinity: ListTileControlAffinity.leading,
+                    title: Text(farmingOptions3[index] ),
+                    value: provider.selectedOptions3[index],
+                    onChanged: (bool? newValue) {
+                      provider.toggleOption3(index);
+                    },
+                  );
+                },
+              );
+            },
+          ),
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        const Text("লবণাক্ততা:"),
+        const SizedBox(
+          height: 10,
+        ),
+        TitleWithField(
+            title1: "পানিতে লবণাক্ততার পরিমান?",
+            title2: " ",
+            textFieldValue:
+            Provider.of<FarmingOptionsProvider>(context).saltAmount),
+        SizedBox(height: 50),
+        CustomeButton(
+          title: "পরবর্তী",
+          onClicked: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ProductionPage4()),
             );
           },
         ),
+      ]
       ),
-      SizedBox(
-        height: 10,
-      ),
-      const Text("লবণাক্ততা:"),
-      const SizedBox(
-        height: 10,
-      ),
-      TitleWithField(
-          title1: "পানিতে লবণাক্ততার পরিমান?",
-          title2: " ",
-          textFieldValue:
-          Provider.of<FarmingOptionsProvider>(context).saltAmount),
-      SizedBox(height: 50),
-      CustomeButton(
-        title: "পরবর্তী",
-        onClicked: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => ProductionPage4()),
-          );
-        },
-      ),
-]
     )
     )
     );

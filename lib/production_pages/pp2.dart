@@ -2,6 +2,7 @@ import 'package:e_traceability_beta/production_pages/pp3.dart';
 import 'package:e_traceability_beta/production_pages/test_page_2.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 
 import '../provider/screen_provider.dart';
@@ -37,48 +38,50 @@ class _ProductionPage2State extends State<ProductionPage2> {
       appBar: const CustomeAppbarUth(title: "উৎপাদন প্রক্রিয়া"),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CustomTitle(title: "পুকুর প্রস্তুতি"),
-            SizedBox(height: 50),
-            Container(
-              height: MediaQuery.of(context).size.height * .5,
-              width: MediaQuery.of(context).size.width,
-              child: Consumer<FarmingOptionsProvider>(
-                builder: (context, provider, child) {
-                  return ListView.builder(
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: farmingOptions2.length,
-                    itemBuilder: (context, index) {
-                      return CheckboxListTile(
-                        activeColor: Colors.black,
-                        controlAffinity: ListTileControlAffinity.leading,
-                        title: Text(farmingOptions2[index]),
-                        value: provider.selectedOptions2[index],
-                        onChanged: (bool? newValue) {
-                          provider.toggleOption2(index);
-                        },
-                      );
-                    },
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CustomTitle(title: "পুকুর প্রস্তুতি"),
+              SizedBox(height: 50),
+              Container(
+                height: MediaQuery.of(context).size.height * .65,
+                width: MediaQuery.of(context).size.width,
+                child: Consumer<FarmingOptionsProvider>(
+                  builder: (context, provider, child) {
+                    return ListView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: farmingOptions2.length,
+                      itemBuilder: (context, index) {
+                        return CheckboxListTile(
+                          activeColor: Colors.black,
+                          controlAffinity: ListTileControlAffinity.leading,
+                          title: Text(farmingOptions2[index]),
+                          value: provider.selectedOptions2[index],
+                          onChanged: (bool? newValue) {
+                            provider.toggleOption2(index);
+                          },
+                        );
+                      },
+                    );
+                  },
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+          
+              CustomeButton(
+                title: "পরবর্তী",
+                onClicked: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ProductionPage3()),
                   );
                 },
               ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-
-            CustomeButton(
-              title: "পরবর্তী",
-              onClicked: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => ProductionPage3()),
-                );
-              },
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );;

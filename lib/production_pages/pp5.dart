@@ -34,68 +34,70 @@ class _ProductionPage5State extends State<ProductionPage5> {
     body: Padding(
     padding: EdgeInsets.all(10.0),
     child:
-    Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-    CustomTitle(title: "PL/ Juvenile এর উৎস"),
-      const SizedBox(
-    height: 10,
-    ),
-    Container(
-    height: MediaQuery.of(context).size.height * .25,
-    width: MediaQuery.of(context).size.width,
-    child: Consumer<FarmingOptionsProvider>(
-    builder: (context, provider, child) {
-    return ListView.builder(
-    physics: NeverScrollableScrollPhysics(),
-    itemCount: farmingOptions5.length,
-    itemBuilder: (context, index) {
-    return CheckboxListTile(
-    activeColor: Colors.black,
-    controlAffinity: ListTileControlAffinity.leading,
-    title: Text(farmingOptions5[index]),
-    value: provider.selectedOptions5[index],
-    onChanged: (bool? newValue) {
-    provider.toggleOption5(index);
-    },
-    );
-    },
-    );
-    },
-    ),
-    ),
-      const SizedBox(
-        height: 20,
+    SingleChildScrollView(
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      CustomTitle(title: "PL/ Juvenile এর উৎস"),
+        const SizedBox(
+      height: 10,
       ),
-      TitleWithField(
-          title1: "বাগদা রেণু মজুদ",
-          title2: "প্রতি বিঘা",
-          textFieldValue:
-          Provider.of<FarmingOptionsProvider>(context).bagdaAmount),
-      TitleWithField(
-          title1: "গলদা রেণু মজুদ",
-          title2: "প্রতি বিঘা",
-          textFieldValue:
-          Provider.of<FarmingOptionsProvider>(context).galdaAmount),
-      TitleWithField(
-          title1: "বলদা পিছ",
-          title2: "প্রতি বিঘা",
-          textFieldValue:
-          Provider.of<FarmingOptionsProvider>(context).bagdaPAmount),
-      TitleWithField(
-          title1: "সাদা মাছ",
-          title2: "সাদা মাছ",
-          textFieldValue:
-          Provider.of<FarmingOptionsProvider>(context).galdaPAmount),
-      SizedBox(
-        height: 20,
+      Container(
+      height: MediaQuery.of(context).size.height * .25,
+      width: MediaQuery.of(context).size.width,
+      child: Consumer<FarmingOptionsProvider>(
+      builder: (context, provider, child) {
+      return ListView.builder(
+      physics: NeverScrollableScrollPhysics(),
+      itemCount: farmingOptions5.length,
+      itemBuilder: (context, index) {
+      return CheckboxListTile(
+      activeColor: Colors.black,
+      controlAffinity: ListTileControlAffinity.leading,
+      title: Text(farmingOptions5[index]),
+      value: provider.selectedOptions5[index],
+      onChanged: (bool? newValue) {
+      provider.toggleOption5(index);
+      },
+      );
+      },
+      );
+      },
       ),
-      Text("***বিশেষ দ্রষ্টব্যঃ  ১ বিঘা = ৩৩ শতাংশ",style: TextStyle(color: Colors.red),),
-      SizedBox(
-        height: 20,
       ),
-      CustomeButton(title: "পরবর্তী", onClicked: (){
-        Navigator.push(context, MaterialPageRoute(builder: (context)=>FinalPage()));
-      })
-    ]
+        const SizedBox(
+          height: 20,
+        ),
+        TitleWithField(
+            title1: "বাগদা রেণু মজুদ",
+            title2: "প্রতি বিঘা",
+            textFieldValue:
+            Provider.of<FarmingOptionsProvider>(context).bagdaAmount),
+        TitleWithField(
+            title1: "গলদা রেণু মজুদ",
+            title2: "প্রতি বিঘা",
+            textFieldValue:
+            Provider.of<FarmingOptionsProvider>(context).galdaAmount),
+        TitleWithField(
+            title1: "বলদা পিছ",
+            title2: "প্রতি বিঘা",
+            textFieldValue:
+            Provider.of<FarmingOptionsProvider>(context).bagdaPAmount),
+        TitleWithField(
+            title1: "সাদা মাছ",
+            title2: "সাদা মাছ",
+            textFieldValue:
+            Provider.of<FarmingOptionsProvider>(context).galdaPAmount),
+        SizedBox(
+          height: 20,
+        ),
+        Text("***বিশেষ দ্রষ্টব্যঃ  ১ বিঘা = ৩৩ শতাংশ",style: TextStyle(color: Colors.red),),
+        SizedBox(
+          height: 20,
+        ),
+        CustomeButton(title: "পরবর্তী", onClicked: (){
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>FinalPage()));
+        })
+      ]
+      ),
     )
     )
     );

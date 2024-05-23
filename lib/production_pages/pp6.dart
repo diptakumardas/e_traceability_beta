@@ -47,83 +47,85 @@ class _FinalPageState extends State<FinalPage> {
     padding: EdgeInsets.all(10.0),
     child:
     SingleChildScrollView(
-      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      CustomTitle(title: "মাছের স্বাস্থ্য এবং পানির গুণাগুণ পরীক্ষা"),
-      SizedBox(height: 50),
-      const Text("আপনি কি মাছ/চিংড়ি বৃদ্ধির হার পরীক্ষা করেন?"),
-      const SizedBox(
-      height: 10,
-      ),
-        Container(
-          height: MediaQuery.of(context).size.height * .13,
-          width: MediaQuery.of(context).size.width,
-          child: Consumer<FarmingOptionsProvider>(
-            builder: (context, provider, child) {
-              return ListView.builder(
-                physics: NeverScrollableScrollPhysics(),
-                itemCount: option.length,
-                itemBuilder: (context, index) {
-                  return CheckboxListTile(
-                    activeColor: Colors.black,
-                    controlAffinity: ListTileControlAffinity.leading,
-                    title: Text(option[index]),
-                    value: provider.selectedOptions6[index],
-                    onChanged: (bool? newValue) {
-                      provider.toggleOption6(index);
-                    },
-                  );
-                },
-              );
-            },
-          ),
-        ),
-        SizedBox(
-          height: 10,
-        ),
-        Text(
-          "আপনি পানির গুনাগুনের নিচের কোন টেস্টগুলো করেন এবং রেকর্ড রাখেন?",
-          style: TextStyle(fontSize: 16),
-        ),
-        SizedBox(
-          height: 10,
-        ),
-        Container(
-          height: MediaQuery.of(context).size.height * .43,
-          width: MediaQuery.of(context).size.width,
-          child: Consumer<FarmingOptionsProvider>(
-            builder: (context, provider, child) {
-              return ListView.builder(
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: farmingOptions6.length,
-                itemBuilder: (context, index) {
-                  return CheckboxListTile(
-                    activeColor: Colors.black,
-                    controlAffinity: ListTileControlAffinity.leading,
-                    title: Text(farmingOptions6[index]),
-                    value: provider.selectedOptions7[index],
-                    onChanged: (bool? newValue) {
-                      provider.toggleOption7(index);
-                    },
-                  );
-                },
-              );
-            },
-          ),
-        ),
+      child: SingleChildScrollView(
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        CustomTitle(title: "মাছের স্বাস্থ্য এবং পানির গুণাগুণ পরীক্ষা"),
+        SizedBox(height: 50),
+        const Text("আপনি কি মাছ/চিংড়ি বৃদ্ধির হার পরীক্ষা করেন?"),
         const SizedBox(
-          height: 10,
+        height: 10,
         ),
-      
-        CustomeButton(
-          title: "পরবর্তী",
-          onClicked: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => PreviewFinalPage()),
-            );
-          },
+          Container(
+            height: MediaQuery.of(context).size.height * .13,
+            width: MediaQuery.of(context).size.width,
+            child: Consumer<FarmingOptionsProvider>(
+              builder: (context, provider, child) {
+                return ListView.builder(
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: option.length,
+                  itemBuilder: (context, index) {
+                    return CheckboxListTile(
+                      activeColor: Colors.black,
+                      controlAffinity: ListTileControlAffinity.leading,
+                      title: Text(option[index]),
+                      value: provider.selectedOptions6[index],
+                      onChanged: (bool? newValue) {
+                        provider.toggleOption6(index);
+                      },
+                    );
+                  },
+                );
+              },
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Text(
+            "আপনি পানির গুনাগুনের নিচের কোন টেস্টগুলো করেন এবং রেকর্ড রাখেন?",
+            style: TextStyle(fontSize: 16),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Container(
+            height: MediaQuery.of(context).size.height * .45,
+            width: MediaQuery.of(context).size.width,
+            child: Consumer<FarmingOptionsProvider>(
+              builder: (context, provider, child) {
+                return ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: farmingOptions6.length,
+                  itemBuilder: (context, index) {
+                    return CheckboxListTile(
+                      activeColor: Colors.black,
+                      controlAffinity: ListTileControlAffinity.leading,
+                      title: Text(farmingOptions6[index]),
+                      value: provider.selectedOptions7[index],
+                      onChanged: (bool? newValue) {
+                        provider.toggleOption7(index);
+                      },
+                    );
+                  },
+                );
+              },
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+        
+          CustomeButton(
+            title: "পরবর্তী",
+            onClicked: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => PreviewFinalPage()),
+              );
+            },
+          ),
+        ]
         ),
-      ]
       ),
     )
     )

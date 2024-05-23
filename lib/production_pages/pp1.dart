@@ -32,56 +32,62 @@ class _ProductionPage1State extends State<ProductionPage1> {
         appBar: CustomeAppbarUth(title: "উৎপাদন প্রক্রিয়া"),
         body: Padding(
             padding: EdgeInsets.all(10.0),
-            child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              CustomTitle(title: "মাছের খামার এবং কৃষি ব্যবস্থা"),
-              SizedBox(height: 50),
-              const Text("চাষের ধরন/বিভাগঃ "),
-              const SizedBox(
-                height: 10,
-              ),
-              Container(
-                height: MediaQuery.of(context).size.height * .25,
-                width: MediaQuery.of(context).size.width,
-                child: Consumer<FarmingOptionsProvider>(
-                  builder: (context, provider, child) {
-                    return ListView.builder(
-                      physics: NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      itemCount: farmingOptions1.length,
-                      itemBuilder: (context, index) {
-                        return CheckboxListTile(
-                          activeColor: Colors.black,
-                          controlAffinity: ListTileControlAffinity.leading,
-                          title: Text(farmingOptions1[index]),
-                          value: provider.selectedOptions1[index],
-                          onChanged: (bool? newValue) {
-                            provider.toggleOption1(index);
-                          },
+            child: SingleChildScrollView(
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CustomTitle(title: "মাছের খামার এবং কৃষি ব্যবস্থা"),
+                    SizedBox(height: 50),
+                    const Text("চাষের ধরন/বিভাগঃ "),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      height: MediaQuery.of(context).size.height * .25,
+                      width: MediaQuery.of(context).size.width,
+                      child: Consumer<FarmingOptionsProvider>(
+                        builder: (context, provider, child) {
+                          return ListView.builder(
+                            physics: NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            itemCount: farmingOptions1.length,
+                            itemBuilder: (context, index) {
+                              return CheckboxListTile(
+                                activeColor: Colors.black,
+                                controlAffinity:
+                                    ListTileControlAffinity.leading,
+                                title: Text(farmingOptions1[index]),
+                                value: provider.selectedOptions1[index],
+                                onChanged: (bool? newValue) {
+                                  provider.toggleOption1(index);
+                                },
+                              );
+                            },
+                          );
+                        },
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    TitleWithField(
+                        title1: "চাষযোগ্য মোট জমির পরিমান",
+                        title2: "শতাংশ",
+                        textFieldValue:
+                            Provider.of<FarmingOptionsProvider>(context)
+                                .landArea),
+                    SizedBox(height: 50),
+                    CustomeButton(
+                      title: "পরবর্তী",
+                      onClicked: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ProductionPage2()),
                         );
                       },
-                    );
-                  },
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              TitleWithField(
-                  title1: "চাষযোগ্য মোট জমির পরিমান",
-                  title2: "শতাংশ",
-                  textFieldValue:
-                      Provider.of<FarmingOptionsProvider>(context).landArea),
-              SizedBox(height: 50),
-              CustomeButton(
-                title: "পরবর্তী",
-                onClicked: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ProductionPage2()),
-                  );
-                },
-              ),
-            ])));
+                    ),
+                  ]),
+            )));
   }
 }
