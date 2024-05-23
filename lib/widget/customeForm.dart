@@ -2,9 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Customeform extends StatefulWidget {
-  const Customeform({super.key,required this.title,required this.hintText,});
+  const Customeform({super.key,required this.title,required this.hintText, required this.controller,});
   final String title;
   final String hintText;
+  final TextEditingController controller;
+
 
 
   @override
@@ -13,7 +15,8 @@ class Customeform extends StatefulWidget {
 
 class _CustomeformState extends State<Customeform> {
 
-  TextEditingController controller = TextEditingController();
+
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -28,9 +31,7 @@ class _CustomeformState extends State<Customeform> {
           height: 50,
           child: Form(
             child: TextFormField(
-              controller: controller,
 
-              obscureText: true,
               decoration: InputDecoration(
                 hintText: widget.hintText,
                 hintStyle: TextStyle(fontSize: 15,color: Colors.black),
