@@ -13,6 +13,12 @@ class ProductionPage6 extends StatefulWidget {
 }
 
 class _ProductionPage6State extends State<ProductionPage6> {
+
+  final List<String> option = [
+    'হ্যাঁ',
+    "না"
+  ];
+
   final List<String> farmingOptions6 = [
     "পিএইচ",
     "লবণাক্ততা",

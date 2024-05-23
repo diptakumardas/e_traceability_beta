@@ -53,6 +53,9 @@ class _UthpadonPage3State extends State<UthpadonPage3> {
                             });
                           });
                     })),
+            SizedBox(
+              height: 10,
+            ),
             const Text("লবণাক্ততা:"),
             const SizedBox(
               height: 10,

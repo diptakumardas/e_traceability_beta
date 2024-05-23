@@ -1,3 +1,6 @@
+import 'package:e_traceability_beta/production_pages/pp1.dart';
+import 'package:e_traceability_beta/production_pages/preview_final_page.dart';
+import 'package:e_traceability_beta/production_pages/preview_page.dart';
 import 'package:e_traceability_beta/production_pages/production_page_6.dart';
 import 'package:e_traceability_beta/production_pages/test_page.dart';
 import 'package:e_traceability_beta/provider/screen_provider.dart';
@@ -25,9 +28,9 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (context) => FarmingOptionsProvider(),
-      child: MaterialApp(
+      child:  MaterialApp(
         debugShowCheckedModeBanner: false,
-        home:SellScreen()
+        home:ProductionPage1()
       ),
     );
   }

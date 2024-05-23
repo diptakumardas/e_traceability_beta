@@ -56,7 +56,7 @@ class _PreviewPageState extends State<PreviewPage> {
                         activeColor: Colors.black,
                         controlAffinity: ListTileControlAffinity.leading,
                         title: Text(farmingOptions2[index]),
-                        value: provider.selectedOptions[index],
+                        value: provider.selectedOptions2[index],
                         onChanged: null, // Disable checkbox interaction
                       );
                     },
@@ -95,6 +95,9 @@ class _PreviewPageState extends State<PreviewPage> {
                     },
                   );
                 },
+              ),
+              SizedBox(
+                height: 30,
               ),
             ],
           ),
