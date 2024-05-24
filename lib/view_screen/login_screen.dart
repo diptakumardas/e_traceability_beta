@@ -2,6 +2,8 @@ import 'package:e_traceability_beta/widget/custome_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../network/network_manager.dart';
+import '../network/request_model/request_model.dart';
 import 'dash_board.dart';
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -13,6 +15,66 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   TextEditingController userController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+
+
+
+  final formKey = GlobalKey<FormState>();
+  bool isLoading = false;
+
+
+
+
+
+
+
+  void login(String username, password, context) {
+    NetworkManager()
+        .logIn(LoginRequest(email: username, password: password))
+        .then((value) {
+      if (value.encoded != null && value.encoded!.isError != null && value.encoded!.isError!) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(value.encoded!.error?.errMsg ?? 'An error occurred'),
+            duration: Duration(seconds: 3),
+          ),
+        );
+      } else {
+
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Login complete!'),
+            duration: Duration(seconds: 3),
+          ),
+        );
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => DashBoard()),
+        );
+      }
+    }).catchError((error) {
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('${error.toString().split(':').last}'),
+          duration: Duration(seconds: 3),
+        ),
+      );
+    });
+
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,6 +122,11 @@ class _LoginScreenState extends State<LoginScreen> {
                         height: 55,
                         child: Form(
                           child: TextFormField(
+                            validator: (value){
+                              if(value!.isEmpty){
+                                return "enter user name";
+                              }
+                            },
                             controller: userController,
                             decoration: InputDecoration(
                               hintText: "আপনার নাম লিখুন ",
@@ -86,6 +153,11 @@ class _LoginScreenState extends State<LoginScreen> {
                         height: 55,
                         child: Form(
                           child: TextFormField(
+                            validator: (value){
+                              if(value!.isEmpty){
+                                return "enter Password";
+                              }
+                            },
                             controller: passwordController,
                             obscureText: true,
                             decoration: InputDecoration(
@@ -110,7 +182,16 @@ class _LoginScreenState extends State<LoginScreen> {
                         height: 45,
                       ),
                       CustomeButton(title: "প্রবেশ করুন ", onClicked: (){
-                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>DashBoard()));
+                        if (formKey.currentState!.validate()) {
+                          login(userController.text, passwordController.text,
+                              context);
+                        }
+
+
+
+
+
+                       /* Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>DashBoard()));*/
                       }),
 
                       const SizedBox(
