@@ -1,6 +1,7 @@
 import 'package:e_traceability_beta/splash_screen/page_1.dart';
 import 'package:e_traceability_beta/splash_screen/page_2.dart';
 import 'package:e_traceability_beta/splash_screen/page_3.dart';
+import 'package:e_traceability_beta/view_screen/test_login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -40,7 +41,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   child: const Text("এড়িয়ে যান "),
                   onTap: () {
                     Navigator.pushReplacement(context,
-                        MaterialPageRoute(builder: (context) => LoginScreen()));
+                        MaterialPageRoute(builder: (context) => LoginScreenTest()));
                   },
                 ),
 
@@ -53,7 +54,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 onLastPage
                     ? GestureDetector(
                         onTap: () {
-                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>LoginScreen()));
+                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>LoginScreenTest()));
                         },
                         child: Container(
                           height: 40,

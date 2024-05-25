@@ -36,7 +36,7 @@ class _MyAppState extends State<MyApp> {
     ],
     child: MaterialApp(
         debugShowCheckedModeBanner: false,
-      home: LoginScreenTest(),
+      home: SplashScreen(),
     ),
     );
 

@@ -79,7 +79,7 @@ class _LoginScreenTestState extends State<LoginScreenTest> {
               style: TextStyle(fontSize: 16),
             ),
             SizedBox(
-              height: MediaQuery.sizeOf(context).height * .05,
+              height: MediaQuery.sizeOf(context).height * .15,
             ),
             Form(
               key: formKey,
@@ -100,7 +100,7 @@ class _LoginScreenTestState extends State<LoginScreenTest> {
                         height: 20,
                       ),
                       CustomeTextField(
-                        suffixIcons: CupertinoIcons.eye,
+                        suffixIcons: CupertinoIcons.eye_slash_fill,
                         title: "পাসওয়ার্ড",
                         hintText: "পাসওয়ার্ড",
                         obscureText: true,

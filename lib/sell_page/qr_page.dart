@@ -1,17 +1,20 @@
-import 'dart:typed_data';
+import 'package:e_traceability_beta/view_screen/dash_board.dart';
+import 'package:e_traceability_beta/widget/custome_button.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
+import 'dart:typed_data';
 
 class QrPage extends StatelessWidget {
   final Uint8List? imageData;
   final Map<String, String> formValues;
 
-  QrPage({Key? key, required this.imageData, required this.formValues}) : super(key: key);
+  QrPage({Key? key, required this.imageData, required this.formValues})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // Convert formValues to a single string
-    String qrData = formValues.entries.map((e) => '${e.key}: ${e.value}').join('\n');
+    String qrData =
+        formValues.entries.map((e) => '${e.key}: ${e.value}').join('\n');
 
     return Scaffold(
       appBar: AppBar(
@@ -27,19 +30,50 @@ class QrPage extends StatelessWidget {
                 version: QrVersions.auto,
                 size: 200.0,
               ),
-              SizedBox(height: 20),
-              //imageData != null ? Image.memory(imageData!) : Container(),
-              SizedBox(height: 20),
-              Text(
+              const SizedBox(height: 20),
+              if (imageData != null) Image.memory(imageData!),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8)),
+                      backgroundColor: Colors.green.shade600,
+                      fixedSize:
+                          Size.fromWidth(MediaQuery.sizeOf(context).width)),
+                  onPressed: () {},
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "QR প্রিন্ট করুন",
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Icon(
+                        Icons.local_print_shop_outlined,
+                        color: Colors.white,
+                        size: 30,
+                      )
+                    ],
+                  )),
+              TextButton(onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>DashBoard()));
+              }, child: Text("এড়িয়ে যান",style: TextStyle(color: Colors.black,fontSize: 16,fontWeight: FontWeight.w600),))
+              /*const Text(
                 'Scan the QR code to get the details',
                 style: TextStyle(fontSize: 16),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Text(
                 qrData,
-                style: TextStyle(fontSize: 14),
+                style: const TextStyle(fontSize: 14),
                 textAlign: TextAlign.center,
-              ),
+              ),*/
             ],
           ),
         ),

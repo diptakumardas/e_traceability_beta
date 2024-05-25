@@ -27,6 +27,17 @@ class _SellScreenState extends State<SellScreen> {
   TextEditingController controller5 = TextEditingController();
 
   @override
+  void dispose() {
+    // Dispose of controllers to avoid memory leaks
+    controller1.dispose();
+    controller2.dispose();
+    controller3.dispose();
+    controller4.dispose();
+    controller5.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomeAppbarUth(title: "বিক্রয় করুন"),
