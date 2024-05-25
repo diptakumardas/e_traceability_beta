@@ -8,7 +8,9 @@ import 'package:e_traceability_beta/sell_page/qr_page.dart';
 import 'package:e_traceability_beta/sell_page/sell_screen.dart';
 import 'package:e_traceability_beta/splash_screen/splash_screen.dart';
 import 'package:e_traceability_beta/view_screen/dash_board.dart';
+import 'package:e_traceability_beta/view_screen/login_screen.dart';
 import 'package:e_traceability_beta/view_screen/notification_page.dart';
+import 'package:e_traceability_beta/view_screen/test_login_screen.dart';
 import 'package:e_traceability_beta/widget/custome_container.dart';
 import 'package:e_traceability_beta/widget/custome_title.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +36,7 @@ class _MyAppState extends State<MyApp> {
     ],
     child: MaterialApp(
         debugShowCheckedModeBanner: false,
-      home: NotificationPage(),
+      home: LoginScreenTest(),
     ),
     );
 

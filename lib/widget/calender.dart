@@ -1,16 +1,17 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Calender extends StatefulWidget {
-  const Calender({super.key, required this.title, required this.hintText});
   final String title;
   final String hintText;
+  final TextEditingController controller;
+
+  const Calender({Key? key, required this.title, required this.hintText, required this.controller}) : super(key: key);
+
   @override
   State<Calender> createState() => _CalenderState();
 }
 
 class _CalenderState extends State<Calender> {
-  TextEditingController _datecontroller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -24,10 +25,8 @@ class _CalenderState extends State<Calender> {
           height: 50,
           child: TextField(
             readOnly: true,
-            onTap: () {
-              _selecteDate();
-            },
-            controller: _datecontroller,
+            onTap: _selectDate,
+            controller: widget.controller,
             decoration: InputDecoration(
                 suffixIcon: Icon(Icons.calendar_month),
                 hintText: widget.hintText,
@@ -38,12 +37,12 @@ class _CalenderState extends State<Calender> {
                 focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.red))),
           ),
-        )
+        ),
       ],
     );
   }
 
-  Future<void> _selecteDate() async {
+  Future<void> _selectDate() async {
     DateTime? picked = await showDatePicker(
         context: context,
         firstDate: DateTime(2000),
@@ -51,7 +50,7 @@ class _CalenderState extends State<Calender> {
         initialDate: DateTime.now());
     if (picked != null) {
       setState(() {
-        _datecontroller.text = picked.toString().split(" ")[0];
+        widget.controller.text = picked.toString().split(" ")[0];
       });
     }
   }

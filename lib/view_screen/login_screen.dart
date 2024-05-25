@@ -60,7 +60,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         height: 55,
                         child: Form(
                           child: TextFormField(
-
                             controller: userController,
                             decoration: InputDecoration(
                               hintText: "আপনার নাম লিখুন ",
