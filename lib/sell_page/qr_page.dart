@@ -22,59 +22,53 @@ class QrPage extends StatelessWidget {
       ),
       body: Center(
         child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              QrImageView(
-                data: qrData,
-                version: QrVersions.auto,
-                size: 200.0,
-              ),
-              const SizedBox(height: 20),
-              if (imageData != null) Image.memory(imageData!),
-              const SizedBox(height: 20),
-              ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8)),
-                      backgroundColor: Colors.green.shade600,
-                      fixedSize:
-                          Size.fromWidth(MediaQuery.sizeOf(context).width)),
-                  onPressed: () {},
-                  child: const Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "QR প্রিন্ট করুন",
-                        style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      Icon(
-                        Icons.local_print_shop_outlined,
-                        color: Colors.white,
-                        size: 30,
-                      )
-                    ],
-                  )),
-              TextButton(onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>DashBoard()));
-              }, child: Text("এড়িয়ে যান",style: TextStyle(color: Colors.black,fontSize: 16,fontWeight: FontWeight.w600),))
-              /*const Text(
-                'Scan the QR code to get the details',
-                style: TextStyle(fontSize: 16),
-              ),
-              const SizedBox(height: 20),
-              Text(
-                qrData,
-                style: const TextStyle(fontSize: 14),
-                textAlign: TextAlign.center,
-              ),*/
-            ],
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                QrImageView(
+                  data: qrData,
+                  version: QrVersions.auto,
+                  size: 200.0,
+                ),
+                const SizedBox(height: 20),
+                //if (imageData != null) Image.memory(imageData!),
+                const SizedBox(height: 20),
+                ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8)),
+                        backgroundColor: Colors.green.shade600,
+                        fixedSize:
+                            Size.fromWidth(MediaQuery.sizeOf(context).width),
+                    ),
+                    onPressed: () {},
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "QR প্রিন্ট করুন",
+                          style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Icon(
+                          Icons.local_print_shop_outlined,
+                          color: Colors.white,
+                          size: 30,
+                        )
+                      ],
+                    )),
+                TextButton(onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>DashBoard()));
+                }, child: Text("এড়িয়ে যান",style: TextStyle(color: Colors.black,fontSize: 16,fontWeight: FontWeight.w600),))
+              ],
+            ),
           ),
         ),
       ),

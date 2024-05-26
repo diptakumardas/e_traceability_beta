@@ -86,23 +86,50 @@ class _SellScreenState extends State<SellScreen> {
               ),
               const SizedBox(height: 40),
               CustomeButton(
+
                 title: "QR তৈরি করুন",
                 onClicked: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => QrPage(
-                        imageData: _image,
-                        formValues: {
-                          "খামারির নাম": controller1.text,
-                          "ঠিকানা": controller2.text,
-                          "পরিমাণ": controller3.text,
-                          "দাম": controller4.text,
-                          "তারিখ": controller5.text,
-                        },
+                  if(controller1.text.isEmpty ||
+                      controller2.text.isEmpty ||
+                      controller3.text.isEmpty ||
+                      controller4.text.isEmpty ||
+                      controller5.text.isEmpty ||
+                      _image == null){
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text("Warning"),
+                          content: Text("All fields must be filled and an image must be selected."),
+                          actions: [
+                            TextButton(
+                              child: Text("OK"),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  }
+                  else{
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => QrPage(
+                          imageData: _image,
+                          formValues: {
+                            "খামারির নাম": controller1.text,
+                            "ঠিকানা": controller2.text,
+                            "পরিমাণ": controller3.text,
+                            "দাম": controller4.text,
+                            "তারিখ": controller5.text,
+                          },
+                        ),
                       ),
-                    ),
-                  );
+                    );
+                  }
                 },
               ),
             ],

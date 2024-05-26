@@ -16,6 +16,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -23,7 +24,7 @@ class _LoginScreenState extends State<LoginScreen> {
               Container(
                 height: MediaQuery.sizeOf(context).height * .3,
                 width: MediaQuery.sizeOf(context).width,
-                color: Colors.white38,
+                color: Colors.white,
                 child: const Padding(
                   padding: EdgeInsets.only(top: 80.0),
                   child: Column(
@@ -36,7 +37,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         height: 5,
                       ),
                       Text(
-                        "ওহে! ফিরে স্বাগতম , আপনি মিস করা হয়েছে ",
+                        "ওহে! আপনাকে  স্বাগতম , আপনি মিস করা হয়েছে ",
                         style: TextStyle(fontSize: 16),
                       ),
                     ],
@@ -46,7 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
               Container(
                 height: MediaQuery.sizeOf(context).height * .7,
                 width: MediaQuery.sizeOf(context).width,
-                color: Colors.white38,
+                color: Colors.white,
                 child: Padding(
                   padding: const EdgeInsets.all(12.0),
                   child: Column(

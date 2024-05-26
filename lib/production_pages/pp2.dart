@@ -70,14 +70,39 @@ class _ProductionPage2State extends State<ProductionPage2> {
               const SizedBox(
                 height: 10,
               ),
-          
+
               CustomeButton(
                 title: "পরবর্তী",
                 onClicked: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ProductionPage3()),
-                  );
+                  final provider = Provider.of<FarmingOptionsProvider>(
+                      context,
+                      listen: false);
+                  if (provider.selectedOptions2.contains(true)) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ProductionPage3()),
+                    );
+                  } else {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text("Warning"),
+                          content:
+                          Text("Please select at least one option."),
+                          actions: [
+                            TextButton(
+                              child: Text("OK"),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  }
                 },
               ),
             ],

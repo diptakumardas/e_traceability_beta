@@ -35,7 +35,7 @@ class _UthpadonPage5State extends State<UthpadonPage5> {
 
 
             SizedBox(
-                height: MediaQuery.of(context).size.height*.25,
+                height: MediaQuery.of(context).size.height*.4,
                 width: MediaQuery.of(context).size.width,
 
                 child: ListView.builder(
@@ -53,6 +53,9 @@ class _UthpadonPage5State extends State<UthpadonPage5> {
                             });
                           });
                     })),
+            SizedBox(
+              height: 10,
+            ),
 
 
             TitleWithField(title1: "বলদা রেণু মজুদ", title2: "প্রতি বিঘা", textFieldValue: '',),
@@ -60,7 +63,7 @@ class _UthpadonPage5State extends State<UthpadonPage5> {
             TitleWithField(title1: "বলদা পিছ", title2: "প্রতি বিঘা", textFieldValue: '',),
             TitleWithField(title1: "সাদা মাছ", title2: "প্রতি বিঘা", textFieldValue: '',),
             SizedBox(
-              height: 20,
+              height: 30,
             ),
             Text("***বিশেষ দ্রষ্টব্যঃ  ১ বিঘা = ৩৩ শতাংশ",style: TextStyle(color: Colors.red),),
             SizedBox(

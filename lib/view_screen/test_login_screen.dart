@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../network/network_manager.dart';
-import '../network/request_model/request_model.dart';
+import '../network/requestModel/login_request.dart';
 import '../widget/test_widget.dart';
 import 'dash_board.dart';
 
@@ -59,7 +59,6 @@ class _LoginScreenTestState extends State<LoginScreenTest> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
         body: SafeArea(
             child: SingleChildScrollView(
                 child: Column(children: [

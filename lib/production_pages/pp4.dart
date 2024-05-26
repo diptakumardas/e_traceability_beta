@@ -61,6 +61,7 @@ class _ProductionPage4State extends State<ProductionPage4> {
                       height: 20,
                     ),
                     TitleWithField(
+                      keyBoardType: TextInputType.number,
                         title1: "আপনি দিনে কতবার খাবার খাওয়ান",
                         title2: "বার",
                         textFieldValue:
@@ -69,10 +70,35 @@ class _ProductionPage4State extends State<ProductionPage4> {
                     CustomeButton(
                       title: "পরবর্তী",
                       onClicked: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => ProductionPage5()),
-                        );
+                        final provider = Provider.of<FarmingOptionsProvider>(
+                            context,
+                            listen: false);
+                        if (provider.selectedOptions4.contains(true)) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ProductionPage5()),
+                          );
+                        } else {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: Text("Warning"),
+                                content:
+                                Text("Please select at least one option."),
+                                actions: [
+                                  TextButton(
+                                    child: Text("OK"),
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        }
                       },
                     ),
                   

@@ -81,13 +81,14 @@ class TitleWithField extends StatefulWidget {
     required this.title1,
     required this.title2,
     required this.textFieldValue,
-    this.readOnly = false,
+    this.readOnly = false, this.keyBoardType,
   }) : super(key: key);
 
   final String title1;
   final String title2;
   final String textFieldValue;
   final bool? readOnly;
+  final TextInputType? keyBoardType;
 
   @override
   State<TitleWithField> createState() => _TitleWithFieldState();
@@ -121,6 +122,8 @@ class _TitleWithFieldState extends State<TitleWithField> {
           SizedBox(width: 10),
           Expanded(
             child: TextField(
+              keyboardType: widget.keyBoardType,
+
               readOnly: widget.readOnly ?? false,
               controller: controller,
               onChanged: (value) {

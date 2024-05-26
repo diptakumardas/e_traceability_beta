@@ -43,7 +43,7 @@ class _ProductionPage1State extends State<ProductionPage1> {
                       height: 10,
                     ),
                     Container(
-                      height: MediaQuery.of(context).size.height * .25,
+                      height: MediaQuery.of(context).size.height * .3,
                       width: MediaQuery.of(context).size.width,
                       child: Consumer<FarmingOptionsProvider>(
                         builder: (context, provider, child) {
@@ -71,6 +71,7 @@ class _ProductionPage1State extends State<ProductionPage1> {
                       height: 20,
                     ),
                     TitleWithField(
+                        keyBoardType: TextInputType.number,
                         title1: "চাষযোগ্য মোট জমির পরিমান",
                         title2: "শতাংশ",
                         textFieldValue:
@@ -80,11 +81,35 @@ class _ProductionPage1State extends State<ProductionPage1> {
                     CustomeButton(
                       title: "পরবর্তী",
                       onClicked: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ProductionPage2()),
-                        );
+                        final provider = Provider.of<FarmingOptionsProvider>(
+                            context,
+                            listen: false);
+                        if (provider.selectedOptions1.contains(true)) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ProductionPage2()),
+                          );
+                        } else {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: Text("Warning"),
+                                content:
+                                    Text("Please select at least one option."),
+                                actions: [
+                                  TextButton(
+                                    child: Text("OK"),
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        }
                       },
                     ),
                   ]),

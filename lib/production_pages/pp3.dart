@@ -70,6 +70,7 @@ class _ProductionPage3State extends State<ProductionPage3> {
           height: 10,
         ),
         TitleWithField(
+          keyBoardType: TextInputType.number,
             title1: "পানিতে লবণাক্ততার পরিমান?",
             title2: " ",
             textFieldValue:
@@ -78,10 +79,35 @@ class _ProductionPage3State extends State<ProductionPage3> {
         CustomeButton(
           title: "পরবর্তী",
           onClicked: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => ProductionPage4()),
-            );
+            final provider = Provider.of<FarmingOptionsProvider>(
+                context,
+                listen: false);
+            if (provider.selectedOptions3.contains(true)) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => ProductionPage4()),
+              );
+            } else {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    title: Text("Warning"),
+                    content:
+                    Text("Please select at least one option."),
+                    actions: [
+                      TextButton(
+                        child: Text("OK"),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                    ],
+                  );
+                },
+              );
+            }
           },
         ),
       ]

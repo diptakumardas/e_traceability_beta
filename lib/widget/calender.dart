@@ -35,7 +35,7 @@ class _CalenderState extends State<Calender> {
                 enabledBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.grey)),
                 focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.red))),
+                    borderSide: BorderSide(color: Colors.grey))),
           ),
         ),
       ],

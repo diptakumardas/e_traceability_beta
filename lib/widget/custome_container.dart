@@ -18,37 +18,37 @@ class CustomeContainer extends StatefulWidget {
 class _CustomeContainerState extends State<CustomeContainer> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height * .14,
-      width: MediaQuery.of(context).size.width * .4,
-      decoration: BoxDecoration(
-        color: const Color(0xFFE0FFD6),
-        borderRadius: BorderRadius.circular(5),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SizedBox(
-            height: 50,
-            width: 50,
-            child: InkWell(
-              onTap: (){
-                widget.onClicked.call();
-              },
+    return GestureDetector(
+      onTap: (){
+        widget.onClicked.call();
+      },
+      child: Container(
+        height: MediaQuery.of(context).size.height * .14,
+        width: MediaQuery.of(context).size.width * .4,
+        decoration: BoxDecoration(
+          color: const Color(0xFFE0FFD6),
+          borderRadius: BorderRadius.circular(5),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              height: 50,
+              width: 50,
               child: SvgPicture.asset(
                 widget.imagePath,
                 semanticsLabel: "Vector Image",
               ),
             ),
-          ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * .012,
-          ),
-           Text(
-            widget.title,
-            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
-          )
-        ],
+            SizedBox(
+              height: MediaQuery.of(context).size.height * .012,
+            ),
+             Text(
+              widget.title,
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+            )
+          ],
+        ),
       ),
     );
   }
