@@ -7,7 +7,6 @@ import 'package:e_traceability_beta/view_screen/test_login_screen.dart';
 import 'package:e_traceability_beta/widget/custome_container.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../production_pages/production_page1.dart';
@@ -20,17 +19,16 @@ class DashBoard extends StatefulWidget {
 }
 
 class _DashBoardState extends State<DashBoard> {
-
-
   Uint8List? _image;
   File? selectedImage;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: Center(
           child: Padding(
-            padding: const EdgeInsets.only(top: 60.0,left: 16,right: 16),
+            padding: const EdgeInsets.only(top: 60.0, left: 16, right: 16),
             child: SingleChildScrollView(
               child: Column(
                 children: [
@@ -41,7 +39,13 @@ class _DashBoardState extends State<DashBoard> {
                         child: SizedBox(
                           height: MediaQuery.of(context).size.height * .22,
                           width: MediaQuery.of(context).size.width * .45,
-                          child: Image.asset(
+                          child: _image != null
+                              ? Image.memory(
+                            _image!,
+                            fit: BoxFit.cover,
+                            filterQuality: FilterQuality.high,
+                          )
+                              : Image.asset(
                             "images/user.png",
                             fit: BoxFit.cover,
                             filterQuality: FilterQuality.high,
@@ -49,13 +53,17 @@ class _DashBoardState extends State<DashBoard> {
                         ),
                       ),
                       Positioned(
-                          bottom: 50,
-                          right: 80,
-                          left: 140,
-                          top: 155,
-                          child: IconButton(onPressed: (){
+                        top: 140,
+                        right:10,
+                        left: 10,
+
+                        child: IconButton(
+                          onPressed: () {
                             showImagePickerOption(context);
-                          },icon: Icon(Icons.add_a_photo,size: 30,),))
+                          },
+                          icon: Icon(Icons.add_a_photo, size: 30),
+                        ),
+                      ),
                     ],
                   ),
                   SizedBox(
@@ -65,7 +73,7 @@ class _DashBoardState extends State<DashBoard> {
                     " খামারির আইডিঃ ১৬৭০০১",
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
-                   SizedBox(
+                  SizedBox(
                     height: MediaQuery.of(context).size.height * .06,
                   ),
                   Padding(
@@ -85,13 +93,18 @@ class _DashBoardState extends State<DashBoard> {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => ProductionPage1()));
+                                            builder: (context) =>
+                                                ProductionPage1()));
                                   },
                                   imagePath: "images/Vector.svg"),
                               CustomeContainer(
                                   title: "বিক্রি",
                                   onClicked: () {
-                                    Navigator.push(context, MaterialPageRoute(builder: (context)=>SellScreen()));
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                SellScreen()));
                                   },
                                   imagePath: "images/Vector.svg"),
                             ],
@@ -106,7 +119,11 @@ class _DashBoardState extends State<DashBoard> {
                               CustomeContainer(
                                   title: "নোটিফিকেশন ",
                                   onClicked: () {
-                                    Navigator.push(context, MaterialPageRoute(builder: (context)=>NotificationPage()));
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                NotificationPage()));
                                   },
                                   imagePath: "images/notification.svg"),
                             ],
@@ -115,21 +132,30 @@ class _DashBoardState extends State<DashBoard> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 48,),
+                  SizedBox(height: 48),
                   GestureDetector(
-                    onTap:(){
-                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>LoginScreenTest()));
+                    onTap: () {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => LoginScreenTest()));
                     },
                     child: Container(
-                      height: MediaQuery.sizeOf(context).height*.07,
-                      width: MediaQuery.sizeOf(context).width*.87,
+                      height: MediaQuery.sizeOf(context).height * .07,
+                      width: MediaQuery.sizeOf(context).width * .87,
                       decoration: BoxDecoration(
-                        color: Colors.red,
-                        borderRadius: BorderRadius.circular(5)
-                      ),
-                      child: Center(child: Text("লগআউট করুন",style: TextStyle(color: Colors.white,fontSize: 18,fontWeight: FontWeight.w500),)),
+                          color: Colors.red,
+                          borderRadius: BorderRadius.circular(5)),
+                      child: Center(
+                          child: Text(
+                            "লগআউট করুন",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500),
+                          )),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
@@ -137,10 +163,7 @@ class _DashBoardState extends State<DashBoard> {
         ),
       ),
     );
-
-
   }
-
 
   void showImagePickerOption(BuildContext context) {
     showModalBottomSheet(
@@ -167,7 +190,7 @@ class _DashBoardState extends State<DashBoard> {
                               Icons.camera_alt,
                               size: 60,
                             ),
-                            Text("Camera")
+                            Text("Camera"),
                           ],
                         ),
                       ),
@@ -185,30 +208,18 @@ class _DashBoardState extends State<DashBoard> {
                               Icons.image,
                               size: 60,
                             ),
-                            Text("gallery")
+                            Text("Gallery"),
                           ],
                         ),
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
           );
         });
   }
-
-
-
-
-
-
-
-
-
-
-
-
 
   Future _pickImageFromCamera() async {
     final returnImage =
@@ -221,7 +232,6 @@ class _DashBoardState extends State<DashBoard> {
     Navigator.pop(context);
   }
 
-
   Future _pickImageFromGallery() async {
     final returnImage =
     await ImagePicker().pickImage(source: ImageSource.gallery);
@@ -232,7 +242,4 @@ class _DashBoardState extends State<DashBoard> {
     });
     Navigator.pop(context);
   }
-
-
-
 }
