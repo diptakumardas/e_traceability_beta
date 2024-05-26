@@ -63,7 +63,7 @@ class _LoginScreenTestState extends State<LoginScreenTest> {
             child: SingleChildScrollView(
                 child: Column(children: [
       Padding(
-        padding: EdgeInsets.only(top: 92, left: 10, right: 10),
+        padding: EdgeInsets.only(top: 92, left: 16, right: 16),
         child: Column(
           children: [
             Text(
@@ -74,7 +74,7 @@ class _LoginScreenTestState extends State<LoginScreenTest> {
               height: 5,
             ),
             Text(
-              "ওহে! ফিরে স্বাগতম , আপনি মিস করা হয়েছে ",
+              "স্বাগতম, দয়া করে লগইন করুন",
               style: TextStyle(fontSize: 16),
             ),
             SizedBox(

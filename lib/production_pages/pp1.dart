@@ -31,7 +31,7 @@ class _ProductionPage1State extends State<ProductionPage1> {
     return Scaffold(
         appBar: CustomeAppbarUth(title: "উৎপাদন প্রক্রিয়া"),
         body: Padding(
-            padding: EdgeInsets.all(10.0),
+            padding: EdgeInsets.all(16.0),
             child: SingleChildScrollView(
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

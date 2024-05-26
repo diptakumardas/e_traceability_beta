@@ -20,28 +20,28 @@ class _CamraModuleState extends State<CamraModule> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-          height: 200,
-          width: double.infinity,
-          color: Color(0xFFE0FFD6),
-          child: _image != null
-              ? Image.memory(_image!, fit: BoxFit.contain)
-              : Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              IconButton(
-                onPressed: _pickImageFromGallery,
-                icon: const Icon(
-                  Icons.image_outlined,
-                  color: Colors.grey,
-                  size: 40,
+        GestureDetector(
+          onTap: _pickImageFromGallery,
+          child: Container(
+            height: 200,
+            width: double.infinity,
+            color: Color(0xFFE0FFD6),
+            child: _image != null
+                ? Image.memory(_image!, fit: BoxFit.contain)
+                : Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Icon(
+                    Icons.image_outlined,
+                    color: Colors.grey,
+                    size: 40,
                 ),
-              ),
-              const Text(
-                "ছবি নির্বাচন করুন",
-                style: TextStyle(color: Colors.grey, fontSize: 15),
-              )
-            ],
+                const Text(
+                  "ছবি নির্বাচন করুন",
+                  style: TextStyle(color: Colors.grey, fontSize: 15),
+                )
+              ],
+            ),
           ),
         ),
         const SizedBox(

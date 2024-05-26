@@ -28,12 +28,12 @@ class _ProductionPage4State extends State<ProductionPage4> {
     return Scaffold(
         appBar: CustomeAppbarUth(title: "উৎপাদন প্রক্রিয়া"),
         body: Padding(
-            padding: EdgeInsets.all(10.0),
+            padding: EdgeInsets.all(16.0),
             child:
                 SingleChildScrollView(
                   child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                                 CustomTitle(title: "ব্যবহৃত ফিডের ধরন"),
-                                SizedBox(height: 50),
+                                SizedBox(height: MediaQuery.sizeOf(context).height*.04),
                     Container(
                       height: MediaQuery.of(context).size.height * .2,
                       width: MediaQuery.of(context).size.width,

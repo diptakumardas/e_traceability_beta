@@ -13,7 +13,7 @@ class _Page1State extends State<Page1> {
   Widget build(BuildContext context) {
     return  Scaffold(
         body: Padding(
-          padding: const EdgeInsets.only(top: 200,left: 10,right: 10),
+          padding: const EdgeInsets.only(top: 200,left: 16,right: 16),
           child: Container(
             height: MediaQuery.sizeOf(context).height*.5,
             width: MediaQuery.sizeOf(context).width,

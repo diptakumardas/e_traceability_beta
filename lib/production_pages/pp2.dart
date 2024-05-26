@@ -37,13 +37,13 @@ class _ProductionPage2State extends State<ProductionPage2> {
     return Scaffold(
       appBar: const CustomeAppbarUth(title: "উৎপাদন প্রক্রিয়া"),
       body: Padding(
-        padding: const EdgeInsets.all(10.0),
+        padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CustomTitle(title: "পুকুর প্রস্তুতি"),
-              SizedBox(height: 50),
+              SizedBox(height: MediaQuery.sizeOf(context).height*.04),
               Container(
                 height: MediaQuery.of(context).size.height * .65,
                 width: MediaQuery.of(context).size.width,

@@ -44,7 +44,7 @@ class _FinalPageState extends State<FinalPage> {
     return Scaffold(
         appBar: CustomeAppbarUth(title: "উৎপাদন প্রক্রিয়া"),
     body: Padding(
-    padding: EdgeInsets.all(10.0),
+    padding: EdgeInsets.all(16.0),
     child:
     SingleChildScrollView(
       child: SingleChildScrollView(
@@ -89,7 +89,7 @@ class _FinalPageState extends State<FinalPage> {
             height: 10,
           ),
           Container(
-            height: MediaQuery.of(context).size.height * .45,
+            height: MediaQuery.of(context).size.height * .50,
             width: MediaQuery.of(context).size.width,
             child: Consumer<FarmingOptionsProvider>(
               builder: (context, provider, child) {
@@ -112,7 +112,7 @@ class _FinalPageState extends State<FinalPage> {
             ),
           ),
           const SizedBox(
-            height: 10,
+            height: 15,
           ),
         
           CustomeButton(

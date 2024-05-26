@@ -7,7 +7,7 @@ class CustomTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height*.04,
+      height: MediaQuery.of(context).size.height*.06,
       width: MediaQuery.of(context).size.width,
       color: const Color(0xFFE0FFD6),
       child: Center(child: Text(title,style: TextStyle(fontSize: 17,fontWeight: FontWeight.w500),)),

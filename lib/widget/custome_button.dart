@@ -15,7 +15,7 @@ class _CustomeButtonState extends State<CustomeButton> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 50,
+      height: 52,
       child: ElevatedButton(
         onPressed: () {
           widget.onClicked.call();

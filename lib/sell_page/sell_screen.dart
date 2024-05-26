@@ -42,7 +42,7 @@ class _SellScreenState extends State<SellScreen> {
     return Scaffold(
       appBar: const CustomeAppbarUth(title: "বিক্রয় করুন"),
       body: Padding(
-        padding: const EdgeInsets.all(10.0),
+        padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -56,16 +56,11 @@ class _SellScreenState extends State<SellScreen> {
               ),
               const SizedBox(height: 30),
               Customeform(
-                title: "খামারির নাম",
-                hintText: "নাম লিখুন",
+                title: "মাছের নাম ",
+                hintText: "মাছের নাম লিখুন",
                 controller: controller1,
               ),
               const SizedBox(height: 10),
-              Customeform(
-                title: "ঠিকানা",
-                hintText: "ঠিকানা লিখুন",
-                controller: controller2,
-              ),
               const SizedBox(height: 10),
               Customeform(
                 title: "পরিমাণ",
@@ -90,7 +85,6 @@ class _SellScreenState extends State<SellScreen> {
                 title: "QR তৈরি করুন",
                 onClicked: () {
                   if(controller1.text.isEmpty ||
-                      controller2.text.isEmpty ||
                       controller3.text.isEmpty ||
                       controller4.text.isEmpty ||
                       controller5.text.isEmpty ||
@@ -120,8 +114,7 @@ class _SellScreenState extends State<SellScreen> {
                         builder: (context) => QrPage(
                           imageData: _image,
                           formValues: {
-                            "খামারির নাম": controller1.text,
-                            "ঠিকানা": controller2.text,
+                            "মাছের  নাম": controller1.text,
                             "পরিমাণ": controller3.text,
                             "দাম": controller4.text,
                             "তারিখ": controller5.text,

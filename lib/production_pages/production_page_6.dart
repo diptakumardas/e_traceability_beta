@@ -37,7 +37,7 @@ class _ProductionPage6State extends State<ProductionPage6> {
     return Scaffold(
       appBar: CustomeAppbarUth(title: "উৎপাদন প্রক্রিয়া"),
       body: Padding(
-        padding: const EdgeInsets.all(10.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
 
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -57,7 +57,7 @@ class _ProductionPage6State extends State<ProductionPage6> {
             ),
 
             Container(
-                height: size.height * .4,
+                height: size.height * .5,
                 width: size.width,
                 child: ListView.builder(
                     physics: const NeverScrollableScrollPhysics(),
@@ -75,7 +75,7 @@ class _ProductionPage6State extends State<ProductionPage6> {
                           });
                     })),
             SizedBox(
-              height: size.height*.05,
+              height: size.height*.08,
             ),
             CustomeButton(title: "সব দেখুন", onClicked: () {})
           ],
