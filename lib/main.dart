@@ -3,6 +3,7 @@ import 'package:e_traceability_beta/production_pages/preview_final_page.dart';
 import 'package:e_traceability_beta/production_pages/preview_page.dart';
 import 'package:e_traceability_beta/production_pages/production_page_6.dart';
 import 'package:e_traceability_beta/production_pages/test_page.dart';
+import 'package:e_traceability_beta/provider/image_provider.dart';
 import 'package:e_traceability_beta/provider/screen_provider.dart';
 import 'package:e_traceability_beta/sell_page/qr_page.dart';
 import 'package:e_traceability_beta/sell_page/sell_screen.dart';
@@ -32,6 +33,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MultiProvider(providers: [
       ChangeNotifierProvider(create: (context)=>FarmingOptionsProvider()),
+      ChangeNotifierProvider(create: (context)=>ImageProviderModel())
 
     ],
     child: MaterialApp(

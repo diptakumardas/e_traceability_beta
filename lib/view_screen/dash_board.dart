@@ -8,7 +8,8 @@ import 'package:e_traceability_beta/widget/custome_container.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-
+import 'package:provider/provider.dart';
+import '../provider/image_provider.dart';
 import '../production_pages/production_page1.dart';
 
 class DashBoard extends StatefulWidget {
@@ -19,8 +20,6 @@ class DashBoard extends StatefulWidget {
 }
 
 class _DashBoardState extends State<DashBoard> {
-  Uint8List? _image;
-  File? selectedImage;
 
   @override
   Widget build(BuildContext context) {
@@ -32,39 +31,41 @@ class _DashBoardState extends State<DashBoard> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  Stack(
-                    children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
-                        child: SizedBox(
-                          height: MediaQuery.of(context).size.height * .22,
-                          width: MediaQuery.of(context).size.width * .45,
-                          child: _image != null
-                              ? Image.memory(
-                            _image!,
-                            fit: BoxFit.cover,
-                            filterQuality: FilterQuality.high,
-                          )
-                              : Image.asset(
-                            "images/user.png",
-                            fit: BoxFit.cover,
-                            filterQuality: FilterQuality.high,
+                  Consumer<ImageProviderModel>(
+                    builder: (context, imageProvider, child) {
+                      return Stack(
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(10),
+                            child: SizedBox(
+                              height: MediaQuery.of(context).size.height * .22,
+                              width: MediaQuery.of(context).size.width * .45,
+                              child: imageProvider.image != null
+                                  ? Image.memory(
+                                imageProvider.image!,
+                                fit: BoxFit.cover,
+                                filterQuality: FilterQuality.high,
+                              )
+                                  : Image.asset(
+                                "images/user.png",
+                                fit: BoxFit.cover,
+                                filterQuality: FilterQuality.high,
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
-                      Positioned(
-                        top: 140,
-                        right:10,
-                        left: 10,
-
-                        child: IconButton(
-                          onPressed: () {
-                            showImagePickerOption(context);
-                          },
-                          icon: Icon(Icons.add_a_photo, size: 30),
-                        ),
-                      ),
-                    ],
+                          Positioned(
+                            bottom: 10,
+                            right: 10,
+                            child: IconButton(
+                              onPressed: () {
+                                showImagePickerOption(context);
+                              },
+                              icon: Icon(Icons.add_a_photo, size: 30),
+                            ),
+                          ),
+                        ],
+                      );
+                    },
                   ),
                   SizedBox(
                     height: MediaQuery.sizeOf(context).height * .03,
@@ -181,7 +182,7 @@ class _DashBoardState extends State<DashBoard> {
                   Expanded(
                     child: InkWell(
                       onTap: () {
-                        _pickImageFromCamera();
+                        _pickImageFromCamera(context);
                       },
                       child: const SizedBox(
                         child: Column(
@@ -199,7 +200,7 @@ class _DashBoardState extends State<DashBoard> {
                   Expanded(
                     child: InkWell(
                       onTap: () {
-                        _pickImageFromGallery();
+                        _pickImageFromGallery(context);
                       },
                       child: const SizedBox(
                         child: Column(
@@ -221,25 +222,19 @@ class _DashBoardState extends State<DashBoard> {
         });
   }
 
-  Future _pickImageFromCamera() async {
+  Future _pickImageFromCamera(BuildContext context) async {
     final returnImage =
     await ImagePicker().pickImage(source: ImageSource.camera);
     if (returnImage == null) return;
-    setState(() {
-      selectedImage = File(returnImage.path);
-      _image = File(returnImage.path).readAsBytesSync();
-    });
+    context.read<ImageProviderModel>().setImage(File(returnImage.path));
     Navigator.pop(context);
   }
 
-  Future _pickImageFromGallery() async {
+  Future _pickImageFromGallery(BuildContext context) async {
     final returnImage =
     await ImagePicker().pickImage(source: ImageSource.gallery);
     if (returnImage == null) return;
-    setState(() {
-      selectedImage = File(returnImage.path);
-      _image = File(returnImage.path).readAsBytesSync();
-    });
+    context.read<ImageProviderModel>().setImage(File(returnImage.path));
     Navigator.pop(context);
   }
 }
