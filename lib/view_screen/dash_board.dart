@@ -60,7 +60,7 @@ class _DashBoardState extends State<DashBoard> {
                               onPressed: () {
                                 showImagePickerOption(context);
                               },
-                              icon: Icon(Icons.add_a_photo, size: 30),
+                              icon: const Icon(Icons.add_a_photo, size: 30),
                             ),
                           ),
                         ],
@@ -95,7 +95,7 @@ class _DashBoardState extends State<DashBoard> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                ProductionPage1()));
+                                                const ProductionPage1()));
                                   },
                                   imagePath: "images/Vector.svg"),
                               CustomeContainer(
@@ -133,7 +133,7 @@ class _DashBoardState extends State<DashBoard> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 48),
+                  const SizedBox(height: 48),
                   GestureDetector(
                     onTap: () {
                       Navigator.pushReplacement(
